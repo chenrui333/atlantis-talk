@@ -1,0 +1,78 @@
+import pptxgen from 'pptxgenjs';
+import QRCode from 'qrcode';
+import fs from 'node:fs';
+const deck = new pptxgen();
+deck.layout='LAYOUT_WIDE'; deck.author='Rui Chen'; deck.subject='Five-minute CNCF Project Lightning Talk';
+deck.title='Project Lightning Talk: Atlantis: Terraform Pull Request Automation for Cloud Native Teams';
+deck.company='Atlantis'; deck.lang='en-US';
+deck.theme={headFontFace:'Arial',bodyFontFace:'Arial',lang:'en-US'};
+const C={bg:'101B26',panel:'1B2C3B',line:'3C5365',text:'F5F8FA',muted:'B8C8D5',blue:'6DD9E9',amber:'F1C985'};
+const W=13.333333,H=7.5, M=.62; const notes=JSON.parse(fs.readFileSync('narration.json','utf8'));
+const shape=deck.ShapeType;
+function text(s,t,x,y,w,h,size=24,color=C.text,more={}) {s.addText(t,{x,y,w,h,fontFace:'Arial',fontSize:size,color,margin:0,breakLine:false,vertAnchor:'mid',...more});}
+function box(s,x,y,w,h,fill=C.panel,line=fill){s.addShape(shape.rect,{x,y,w,h,fill:{color:fill},line:{color:line,width:1}});}
+function line(s,x,y,w,h=0,color=C.line,arrow=false){s.addShape(shape.line,{x,y,w,h,line:{color,width:2,beginArrowType:'none',endArrowType:arrow?'triangle':'none'}});}
+function pill(s,t,x,y,w,color=C.blue){box(s,x,y,w,.48,C.panel);text(s,t,x+.13,y,w-.26,.48,18,color,{bold:true});}
+function node(s,t,sub,x,y,w=3.1,h=1.22){box(s,x,y,w,h);text(s,t,x+.22,y+.15,w-.44,.43,27,C.text,{bold:true});if(sub)text(s,sub,x+.22,y+.68,w-.44,.36,19,C.muted);}
+function logo(s,x,y,w){s.addImage({path:'assets/atlantis-icon.svg',x,y,w,h:w});}
+function base(i,label,title){const s=deck.addSlide();s.background={color:C.bg};text(s,label.toUpperCase(),M,.34,11,.35,16,C.blue,{charSpacing:2,bold:true});if(title)text(s,title,M,1.02,12.1,1.16,36,C.text,{bold:true});line(s,M,7.05,12.08);text(s,'ATLANTIS   /   PLAN → REVIEW → APPLY',M,7.14,10,.2,11,C.muted);text(s,String(i).padStart(2,'0'),12.23,7.12,.48,.26,12,C.muted,{align:'right'});return s;}
+function addNotes(s,i){
+ const n=notes[i-1];
+ const start=notes.slice(0,i-1).reduce((sum,n)=>sum+n.seconds,0);
+ const clock=t=>`${Math.floor(t/60)}:${String(t%60).padStart(2,'0')}`;
+ const words=`${n.narration} ${n.transition}`.trim().split(/\s+/).length;
+ s.addNotes(`Target: ${clock(start)}–${clock(start+n.seconds)} (${n.seconds} seconds)\nSpoken words: ${words}\nCue: ${n.cue}\n\n${n.narration}\n\nTransition: ${n.transition || 'Hold the closing slide.'}\n\nEmergency cuts:\n${n.emergency_skip.join('\n')}`);
+}
+// 1 — Accepted title is retained verbatim (line breaks only).
+{
+const s=base(1,'Project Lightning Talk:');
+logo(s,9.6,1.25,2.65);
+text(s,'Atlantis:',M,1.18,8.7,1.04,64,C.text,{bold:true});
+text(s,'Terraform Pull Request Automation\nfor Cloud Native Teams',M,2.57,9.0,1.25,31,C.text,{bold:true});
+text(s,'Rui Chen  ·  Atlantis Maintainer',M,4.45,11,.45,24,C.blue);
+text(s,'KubeCon + CloudNativeCon + OpenInfra Summit\n+ PyTorch Conference China 2026',M,5.37,11.9,.73,20,C.muted);
+text(s,'Shanghai, China  ·  September 8, 2026',M,6.34,11,.33,18,C.muted);addNotes(s,1);
+}
+// 3 — Native vector nodes and explicit directional loop.
+{
+const s=base(2,'The mental model','The pull request becomes the workflow.');
+node(s,'Git pull request','Developer opens a change',.7,2.56,4.0,1.3);
+node(s,'Atlantis','Runs Terraform / OpenTofu',8.0,2.56,4.6,1.3);
+line(s,4.83,2.9,3.0,0,C.blue,true);text(s,'1  Webhook → plan',4.92,2.4,2.95,.4,20,C.blue,{align:'center'});
+line(s,7.82,3.56,-3.0,0,C.blue,true);text(s,'2  Plan in PR',4.95,3.73,2.9,.4,20,C.blue,{align:'center'});
+box(s,.7,4.45,6.55,1.18);text(s,'3  Review → approve\nComment: atlantis apply',.92,4.63,6.13,.72,25,C.text,{bold:true});
+line(s,7.39,5.04,1.0,0,C.blue,true);line(s,8.4,5.04,0,-.95,C.blue,true);
+line(s,10.35,3.99,0,1.43,C.blue,true);text(s,'4  Apply',10.57,4.55,1.9,.42,22,C.blue);
+node(s,'Cloud infrastructure','Uses your state backend',8.0,5.59,4.6,1.22);
+text(s,'Self-hosted service. Review stays in Git.',.7,6.2,6.5,.42,23,C.muted);addNotes(s,2);
+}
+// 4 — A deliberate reconstruction, not a screenshot.
+{
+const s=base(3,'Engineer experience','One change. One PR conversation.');
+box(s,.72,2.35,11.9,4.26);text(s,'infra: resize production database',1.02,2.6,10.9,.42,27,C.text,{bold:true});
+line(s,1.02,3.25,11.25);
+const rows=[['Atlantis','Plan: 0 to add, 1 to change, 0 to destroy',C.blue],['Reviewer','Approved',C.text],['Rui','atlantis apply',C.blue],['Atlantis','Apply complete.',C.text]];
+rows.forEach((r,i)=>{let y=3.52+i*.65;text(s,r[0],1.04,y,1.65,.4,21,C.muted);text(s,r[1],3.0,y,9.2,.4,25,r[2],{bold:i===0||i===2});});
+text(s,'Illustrative PR · approval requirement configured · apply before merge',1.02,6.25,11.3,.25,16,C.muted);addNotes(s,3);
+}
+// 5 — Three parallel reasons, no feature matrix.
+{
+const s=base(4,'Why platform teams choose it','A shared workflow. A platform you control.');
+const cards=[['01','Visible','Plan + execution results\nbeside the code review.'],['02','Controlled','Configured approvals,\npolicies + project locks.'],['03','Collaborative','Developers propose.\nThe platform runs it.']];
+cards.forEach((r,i)=>{const x=.7+i*4.06;box(s,x,2.62,3.82,2.76);text(s,r[0],x+.23,2.85,3,.38,20,C.blue);text(s,r[1],x+.23,3.48,3.4,.45,29,C.text,{bold:true});text(s,r[2],x+.23,4.25,3.4,.72,22,C.muted);});
+text(s,'Self-hosted · Kubernetes / Helm, or a server',.7,5.87,12,.45,26,C.blue,{bold:true});
+text(s,'Today: alpha drift APIs · v0.47.1 command-injection fix',.7,6.45,12,.35,19,C.muted);addNotes(s,4);
+}
+// 7 — QR is generated locally with a four-module quiet zone.
+{
+const s=base(5,'Open source · CNCF Sandbox · Apache 2.0');
+text(s,'Infrastructure is code.',M,1.05,12,1.0,44,C.text,{bold:true});
+text(s,'Plan it.\nReview it.\nApply it.',M,2.38,8.1,2.75,51,C.blue,{bold:true,breakLine:false});
+text(s,'From the pull request.',M,5.32,8.3,.65,33,C.text,{bold:true});
+await QRCode.toFile('assets/qr.png','https://www.runatlantis.io/',{width:900,margin:4,errorCorrectionLevel:'M',color:{dark:'#000000',light:'#FFFFFF'}});
+s.addImage({path:'assets/qr.png',x:9.12,y:2.44,w:3.3,h:3.3,hyperlink:{url:'https://www.runatlantis.io/'}});
+text(s,'runatlantis.io',8.88,5.94,3.78,.43,27,C.blue,{align:'center',bold:true,hyperlink:{url:'https://www.runatlantis.io/'}});
+text(s,'github.com/runatlantis/atlantis',M,6.42,8.5,.38,22,C.muted,{hyperlink:{url:'https://github.com/runatlantis/atlantis'}});addNotes(s,5);
+}
+await deck.writeFile({fileName:'slides.pptx'});
+console.log(`Generated ${notes.length} slides.`);

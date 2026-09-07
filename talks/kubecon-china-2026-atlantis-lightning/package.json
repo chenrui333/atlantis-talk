@@ -1,0 +1,15 @@
+{
+  "name": "atlantis-lightning-talk",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node slides.mjs",
+    "render": "bash render.sh",
+    "validate": "python3 validate.py"
+  },
+  "dependencies": {
+    "pptxgenjs": "4.0.1",
+    "qrcode": "1.5.4"
+  }
+}

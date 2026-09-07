@@ -1,0 +1,61 @@
+[
+  {
+    "title": "Atlantis",
+    "seconds": 35,
+    "cue": "Define Atlantis, then expose the laptop handoff.",
+    "narration": "Hi, I'm Rui, an Atlantis maintainer. Atlantis is an open-source service that runs Terraform and OpenTofu plans and applies from pull requests. Many teams already automate infrastructure. But if your workflow still ends with someone running a command from a laptop, the reviewer may see the code without seeing the plan or the result. Atlantis brings those parts of the change into the same conversation.",
+    "transition": "Here is how that works.",
+    "emergency_skip": [],
+    "purpose": "Define the project and make the code/execution gap clear within 35 seconds."
+  },
+  {
+    "title": "The pull request becomes the workflow.",
+    "seconds": 65,
+    "cue": "Trace 1 \u2192 2 \u2192 3 \u2192 4. Atlantis executes; Git holds the review.",
+    "narration": "A developer opens a pull request. The Git host sends a webhook to Atlantis, a service your team hosts. Atlantis detects affected projects and runs a plan using Terraform or OpenTofu. The plan describes the proposed infrastructure changes. Atlantis posts the result back to the pull request, so reviewers can read the code and the plan together. After review, an authorized engineer comments atlantis apply. Atlantis checks the requirements your platform team configured, then runs the apply and reports the result. Terraform or OpenTofu still talks to provider APIs and uses your state backend. Atlantis coordinates the workflow around those tools. You can host Atlantis on Kubernetes with the official Helm chart, or run it on a server. Kubernetes is optional.",
+    "transition": "For the engineer, that looks like this.",
+    "emergency_skip": [
+      "Terraform or OpenTofu still talks to provider APIs and uses your state backend.",
+      "Atlantis coordinates the workflow around those tools."
+    ],
+    "purpose": "Explain who runs the tools, how results return to Git, and where Atlantis can run."
+  },
+  {
+    "title": "One change. One PR conversation.",
+    "seconds": 60,
+    "cue": "Read the plan summary. Approval is a review action, not an LGTM comment.",
+    "narration": "Here is a simplified example: increase a database's capacity. Atlantis posts a plan: zero resources to add, one to change, zero to destroy. That one change still deserves attention. For a database, that could include downtime, connection limits, and the cost change. The reviewer reads the full plan and checks the operational impact, then approves the pull request. I comment atlantis apply, and the bot reports completion. In this workflow, we apply before merging. If the apply fails, we can fix the change in the same pull request and try again. The code, the proposed changes, the review, and the execution result stay together. That is the experience to remember: review infrastructure where you already review code.",
+    "transition": "Why choose a service built around that workflow?",
+    "emergency_skip": [
+      "The code, the proposed changes, the review, and the execution result stay together."
+    ],
+    "purpose": "Make the interaction concrete without suggesting a short plan summary proves safety."
+  },
+  {
+    "title": "A shared workflow. A platform you control.",
+    "seconds": 85,
+    "cue": "Visible \u2192 controlled \u2192 collaborative. Last 25 seconds: current project signals.",
+    "narration": "First, visibility: the plan and execution results sit beside the code review. Second, control: the platform team configures credentials, approval requirements, and optional policy checks. Atlantis project locks help coordinate competing pull requests. Third, collaboration: developers can propose changes through a familiar workflow, without each person needing a privileged workstation. You could build this in generic CI. Atlantis packages the PR interaction, planning, applying, and locking into a purpose-built service. The core workflow needs no separate Atlantis SaaS control plane. Your Git host, state backend, and cloud services remain part of the system. This still runs powerful code: even planning can execute code. Trusted repositories, restricted permissions, and a maintained deployment remain essential. The project continues to evolve for Terraform and OpenTofu users. Recent work includes alpha APIs for drift workflows; version zero point forty-seven added richer drift plan output. The latest release, zero point forty-seven point one, fixes a command-injection vulnerability. These are useful updates for existing operators. For a new team, the starting point is still the pull request.",
+    "transition": "And that is the idea to take away.",
+    "emergency_skip": [
+      "You could build this in generic CI.",
+      "Atlantis packages the PR interaction, planning, applying, and locking into a purpose-built service.",
+      "Your Git host, state backend, and cloud services remain part of the system.",
+      "Recent work includes alpha APIs for drift workflows; version zero point forty-seven added richer drift plan output.",
+      "These are useful updates for existing operators."
+    ],
+    "purpose": "Explain the platform benefit, the purpose-built choice, and verified current development."
+  },
+  {
+    "title": "Infrastructure is code.",
+    "seconds": 30,
+    "cue": "Point to the URL, then land the final four phrases.",
+    "narration": "Atlantis is a CNCF Sandbox project. Visit runatlantis dot io for the getting-started guide, or find the code and contribution guide on GitHub. Start with one repository and one infrastructure change. Bring your team's review rules into that workflow. Infrastructure is code. Plan it. Review it. Apply it. From the pull request.",
+    "transition": "",
+    "emergency_skip": [
+      "Start with one repository and one infrastructure change.",
+      "Bring your team's review rules into that workflow."
+    ],
+    "purpose": "Repeat the mental model and give a clear next step."
+  }
+]

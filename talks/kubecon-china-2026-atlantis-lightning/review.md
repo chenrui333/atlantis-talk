@@ -1,0 +1,32 @@
+# Draft critique and revision record
+
+## Opening candidates
+
+1. Problem: “Your Terraform is in Git, but someone still has to run the change.” Immediate pain, but delays the project definition.
+2. Definition: “Atlantis is an open-source service that runs Terraform and OpenTofu plans and applies from pull requests.” Selected: a newcomer knows what the project does immediately.
+3. Question: “Which plan was reviewed, and who applied it?” Engaging, but needs more context and invites an unnecessary audience pause.
+
+## First draft critique
+
+- First-time attendee: The definition is immediate, but a diagram alone may make it unclear who executes Terraform. Retain “Runs Terraform / OpenTofu” inside the Atlantis node and narrate the state-backend boundary.
+- Platform engineer: Generic CI can do this. Keep the brief explanation of packaged PR interaction, planning, applying and locking; do not add a comparison slide.
+- Atlantis maintainer: Approval requirements must be described as configured, not default. Drift APIs are alpha. Apply-before-merge is the illustrated workflow. Locks coordinate project/workspace changes, not all external state changes. These boundaries are explicit in narration and sources.
+- AV technician: The organizer's final lightning guidance calls for 3–5 slides. Consolidate the seven-slide draft to five. The organizer's supplied template must replace the interim design. Final font, overlap and projection review awaits the template and rendered output.
+
+## Content revision
+
+Five slides preserve the complete narrative by combining problem plus architecture, and platform benefits plus current development. That revision used 555 words and a 4:35 target; the subsequent polish below supersedes its wording. The emergency version makes exact sentence cuts. The small infrastructure node was expanded to keep its subtitle inside the panel.
+
+## Outstanding visual review
+
+The five interim slides were rendered with LibreOffice 7.3.7.2 and inspected in a contact sheet. The diagram was additionally inspected at full resolution after revision. Fixed the broken line within the apply command and exposed the previously obscured downward arrowhead. Rendered again; the PDF has five 16:9 pages, embedded Liberation Sans fonts and a successfully decoded closing-slide QR. Structural checks confirm five slides with synchronized notes and no external image dependencies.
+
+Repeat all rendering and visual checks after applying the official template. Current artifacts are an interim draft, not the completed deliverable.
+
+## Narration polish while the template is pending
+
+Rebalanced the five slides to 0:35 / 1:05 / 1:00 / 1:25 / 0:30. The opening now combines the immediate definition with the laptop handoff problem. The diagram gets its own uninterrupted explanation. The PR narration uses Rui's first-person voice and distinguishes a real review approval from a casual comment. The database example asks reviewers to consider downtime, connection limits and cost.
+
+Removed the sentence about not needing a live terminal; it described the presentation rather than Atlantis. Kept generic-CI positioning brief. Hosting is explained alongside architecture, reducing the burden on the benefits slide. API and security updates remain a short closing segment of that slide.
+
+Full script: 554 words. Emergency: 448 words. Narration, exact emergency cuts, purposes and timing now share one source. Presenter notes include cumulative time and word count as well as narration. The emergency version is printed in full for rehearsal, not just listed as edits.
