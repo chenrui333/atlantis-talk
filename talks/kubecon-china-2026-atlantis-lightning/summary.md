@@ -1,38 +1,18 @@
 # Narrative and design lock
 
-Locked September 7, 2026 before the skill-guided implementation/QA pass.
+Ten-slide introduction requested by Rui; official 2026 template; 16:9; English. Main idea: Atlantis runs Terraform/OpenTofu plan and apply from pull requests. Survey and draft roadmap support this introduction.
 
-## Audience and outcome
+1. **Atlantis** Start with the definition. (15s)
+2. **Code review needs the execution result.** Point to the missing plan and result. (20s)
+3. **Open a PR. See the plan.** Trace the webhook and return arrow. (35s)
+4. **Review it. Request the apply.** Review stays in Git; execution runs on Atlantis. (30s)
+5. **One change. One PR conversation.** Walk the PR rows. A small plan still needs review. (50s)
+6. **Connect your platform tools.** Introduce capability groups and concrete ecosystem integrations. (25s)
+7. **Run Atlantis in your infrastructure.** Explain deployment models and cloud examples without an installation tutorial. (20s)
+8. **What the Atlantis community uses** Separate 2024 survey evidence from current capabilities. (30s)
+9. **Toward Atlantis 1.0.0** Explain the proposed 1.0 direction without promising scope or timing. (20s)
+10. **Infrastructure is code.** Point to the URL, then land the final four phrases. (30s)
 
-Rui Chen's five-minute project spotlight addresses platform engineers, SREs and cloud-native developers, including people new to Atlantis. English; five slides; 4:10 planned delivery. The user-selected custom narrative is definition/problem → workflow → PR example → ecosystem/survey evidence → close. No agenda, live demo, adoption chart or competitor matrix. Slide 4 adds dated first-party survey evidence.
+The skyline cover uses original layout 2; all content uses original white layout 5. Native diagrams remain editable. Arial, dark teal and the original branding are retained. Common content margin is 0.62 inches. Main text is generally 22–36pt or larger; footer metadata is nonessential. Conftest and Infracost are labeled by purpose, not depicted as Terraform providers. Hosting choices have their own slide. Sources map to current slide numbers in sources.md.
 
-One remembered idea: Atlantis is an open-source service that runs Terraform/OpenTofu plans and applies from pull requests.
-
-## Five-slide contract
-
-| Slide | One message | Evidence references | Visual |
-| --- | --- | --- | --- |
-| 1 | Atlantis connects infrastructure execution to code review. | C01, C02, C03, C11, E01 | Exact accepted title, official skyline, Atlantis icon |
-| 2 | The PR is the shared workflow; Atlantis executes the tools. | C01, C04, C05, C06, C11, C12 | Native editable nodes, numbered arrows, review/apply loop |
-| 3 | Engineers review and apply one change in one PR conversation. | C05, C06, C07 | Native text/shape PR reconstruction; counts explicitly illustrative |
-| 4 | Atlantis fits a broad IaC ecosystem used by survey respondents. | S01–S04; P01–P03 | Native ecosystem diagram beside a clearly dated 2024 survey panel |
-| 5 | Plan, review and apply from the PR; try the project. | C01, C16, C17 | Large closing words, direct homepage QR and GitHub link |
-
-Claim IDs resolve in [sources.md](sources.md). Slide 3 PR counts are illustrative. Slide 4 reports 354 survey responses; its remaining findings use the project’s qualitative wording. Any future quantitative adoption claim must add exact source values and methodology there before it enters the deck; never read values approximately from chart images.
-
-## Design authority
-
-The supplied [official PPTX](assets/conference-template.pptx) is authoritative. Retain its original masters, layouts, theme and embedded marks. Template layout 2 supplies the skyline cover; layout 5 supplies the white content canvas and official footer. Uniform scale from 10 × 5.625 to 13⅓ × 7.5 inches preserves aspect ratio and artwork geometry. No skill palette replaces it.
-
-Content uses Arial, chosen for reliable PowerPoint availability and metrically compatible PDF rendering. Titles 36–60pt; primary body 22–29pt; architecture secondary labels 19–20pt; explanatory PR caption 18pt. Section metadata and page numbers are smaller and nonessential. Dark teal text `083E4F`, secondary text `405965`, turquoise accent `086679`, white `FFFFFF`, panel `EAF1F3`. Content accents complement Atlantis artwork and remain subordinate to conference branding.
-
-Common left margin 0.62 inches; content ends above the official footer. Use whitespace, flat panels, consistent 2pt arrows and large native labels. The motif is plan → review → apply. No animation or content-bearing raster diagram. All five notes derive from narration.json and are mirrored by script.md.
-
-## Complementary skills
-
-- `anthropics/skills:pptx`: template/package inspection, namespace preservation, schema/relationship validation against the original, final image QA.
-- `wshobson/agents:pptx-deck-context`: this narrative/design lock and stable factual references.
-- `wshobson/agents:pptx-visual-assets`: asset provenance, bboxes/alt text and editable diagram labels.
-- `refoundai/lenny-skills:giving-presentations`: single remembered idea, takeaway titles, persona critique and compressed/expanded rehearsal. Installed at historical revision `0123453c617e1114d3097380feffb09761ce824a`; current upstream replaced it during reorganization.
-
-Installed locally under the workspace's .agents/skills directory. The repository records provenance in skills-lock.json; downloaded third-party skill payloads are not redistributed. Optional document-pptx was unnecessary: the primary PPTX validator identified the package repairs.
+Applied the installed pptx, pptx-deck-context, pptx-visual-assets and giving-presentations skills. Ten slides depart from the organizer's earlier 3–5 guidance at Rui's direction; no skill overrides the event template.

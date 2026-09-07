@@ -3,7 +3,7 @@
 ## Rehearse
 
 1. Read script.md aloud with a stopwatch. Speak the transitions; do not speak cue labels.
-2. Check 0:35, 1:40, 2:40, 3:40 and 4:10 against timing.md.
+2. Check 0:35, 1:40, 2:40, 4:05 and 4:35 against timing.md.
 3. Rehearse once from speaker-cues.md. The cue sheet is a memory aid, not extra spoken content.
 4. Rehearse the exact emergency script once. Its cuts preserve the explanation, configured approval boundary, and closing.
 
@@ -27,9 +27,11 @@ Check in at the speaker desk at the back of the room, then use the reserved stag
 - Definition first. Do not add a biography or agenda.
 - Follow the four numbered steps on the workflow slide.
 - Pause briefly on “one to change.” A summary does not replace full plan review.
-- Start the closing slide by 3:40. Stop at 4:10 and leave the QR visible.
+- Start the closing slide by 4:05. Stop at 4:35 and leave the QR visible.
 - End on “From the pull request.” No planned Q&A or live demo.
 
 ## Pending organizer details
 
 The public schedule labels the session Chinese; the requested deck and narration are English. The June message directs PDF uploads to Sessionize, while the later project-talk message gives a separate upload route managed by the CNCF team. Confirm the language label and use the organizer's current submission instructions. This repository update does not submit the talk to the organizers.
+
+Rui requested ten slides; confirm organizer acceptance of the departure from the earlier 3–5-slide guidance.

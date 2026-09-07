@@ -2,7 +2,7 @@
 
 Five-minute project talk by Rui Chen, Atlantis Maintainer. **September 8, 2026, 11:35–11:40 China Standard Time**, Shanghai International Convention Center, 5F room 5B + C.
 
-The five-slide deck uses the organizer's official 2026 PowerPoint template: its Shanghai skyline cover and white content layouts. All slides have been rendered, visually inspected and polished. The deck is ready for rehearsal and presentation; organizer submission has not been performed.
+The ten-slide deck uses the organizer's official 2026 PowerPoint template: its Shanghai skyline cover and white content layouts. All slides have been rendered, visually inspected and polished. The deck is ready for rehearsal and presentation; organizer submission has not been performed.
 
 ## Present and rehearse
 
@@ -14,7 +14,7 @@ The five-slide deck uses the organizer's official 2026 PowerPoint template: its 
 - [Narrative outline](outline.md), [design lock](summary.md), [sources](sources.md), [validation](validation.md)
 - [Rehearsal practice and final critique](rehearsal.md)
 
-**4:10 target · 5:00 hard limit · 50-second margin.** The full script has 482 spoken words including transitions. The exact emergency cuts produce 423 words, approximately 3:30 at 130 words/minute including pauses. No live demo, animation or planned Q&A. Timing is modeled; rehearse aloud with a stopwatch.
+**4:35 target · 5:00 hard limit · 25-second margin.** The full script has 489 spoken words including transitions. The exact emergency cuts produce 456 words, approximately 3:45 at 130 words/minute including pauses. No live demo, animation or planned Q&A. Timing is modeled; rehearse aloud with a stopwatch.
 
 ## Regenerate
 
@@ -51,7 +51,7 @@ That container mounts the repository at `/talk`. It is optional; it is not neede
 On macOS, test the generated QR and its final slide with:
 
 ```sh
-swift check-qr.swift assets/qr.png slides-preview/05.png
+swift check-qr.swift assets/qr.png slides-preview/10.png
 ```
 
 ## Provenance and limitations
@@ -60,7 +60,7 @@ Official Atlantis SVGs come from CNCF artwork. The conference template was suppl
 
 PptxGenJS 4.0.1 and qrcode 1.5.4 are pinned. npm audit reports image-size parser advisories inherited through PptxGenJS. This fixed-asset build uses retained official SVGs and locally generated PNG, not the affected ICNS/JXL/HEIF formats. Do not treat the generator as an arbitrary-image upload service.
 
-The two unresolved conference details are the schedule's Chinese language label (this deck and script are English) and the final organizer upload route. See stage-checklist.md. Present from the supplied files after the normal laptop/projector check.
+The unresolved conference details are acceptance of ten slides against the earlier 3–5-slide guidance, the schedule's Chinese language label (this deck and script are English), and the final organizer upload route. See stage-checklist.md. Present from the supplied files after the normal laptop/projector check.
 
 ## Skill-guided QA
 
@@ -74,3 +74,5 @@ uv run --with defusedxml==0.7.1 --with lxml==6.0.2 python .agents/skills/pptx/sc
 ```
 
 The primary PPTX skill's validator checks against the original template. Then render every slide using the commands above and inspect the full-size PNGs. See validation.md for the final result and specific slide checks.
+
+The ten-slide introduction follows Rui’s revised direction. It exceeds the organizer’s earlier 3–5-slide guidance; this departure still needs organizer acceptance. The official template and five-minute time limit remain unchanged.

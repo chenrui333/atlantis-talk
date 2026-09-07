@@ -3,6 +3,7 @@
 The organizer's 10-inch canvas is uniformly scaled to the generated 13⅓-inch
 canvas. The source template is never modified. Only reachable parts are kept.
 """
+import json
 import posixpath
 import zipfile
 from defusedxml.minidom import parseString
@@ -81,7 +82,7 @@ for rel in elements(rels, R, 'Relationship'):
         rel.setAttribute('Target', 'slideMasters/conference_slideMaster1.xml')
 output['ppt/_rels/presentation.xml.rels'] = encode(rels)
 
-for i, layout in enumerate([2, 5, 5, 5, 5], 1):
+for i, layout in enumerate([2] + [5] * (len(json.load(open('narration.json'))) - 1), 1):
     part = f'ppt/slides/slide{i}.xml'
     doc = parseString(output[part])
     common = elements(doc, P, 'cSld')[0]

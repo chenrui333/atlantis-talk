@@ -14,5 +14,5 @@ test -s slides.pdf || { echo "PDF export failed" >&2; exit 1; }
 mkdir -p slides-preview
 pdftoppm -png -r 144 slides.pdf slides-preview/slide >/dev/null 2>&1
 count=$(python3 -c 'import json; print(len(json.load(open("narration.json"))))')
-for ((i=1; i<=count; i++)); do printf -v dest '%02d' "$i"; mv "slides-preview/slide-$i.png" "slides-preview/$dest.png"; done
+for ((i=1; i<=count; i++)); do printf -v dest '%02d' "$i"; mv "slides-preview/slide-$dest.png" "slides-preview/$dest.png"; done
 pdfinfo slides.pdf | head -18

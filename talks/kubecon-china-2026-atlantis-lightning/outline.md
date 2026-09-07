@@ -4,30 +4,60 @@ Atlantis runs Terraform/OpenTofu plans and applies from pull requests. Every sli
 
 ## 1. Atlantis
 
-Define the project and make the code/execution gap clear within 35 seconds.
+Start with the definition.
 
-Target: 0:00–0:35.
+Target: 0:00–0:15.
 
-## 2. The pull request becomes the workflow.
+## 2. Code review needs the execution result.
 
-Explain who runs the tools, how results return to Git, and where Atlantis can run.
+Point to the missing plan and result.
 
-Target: 0:35–1:40.
+Target: 0:15–0:35.
 
-## 3. One change. One PR conversation.
+## 3. Open a PR. See the plan.
 
-Make the interaction concrete without suggesting a short plan summary proves safety.
+Trace the webhook and return arrow.
 
-Target: 1:40–2:40.
+Target: 0:35–1:10.
 
-## 4. Atlantis in the IaC ecosystem
+## 4. Review it. Request the apply.
 
-Show current ecosystem fit alongside clearly dated first-party survey evidence.
+Review stays in Git; execution runs on Atlantis.
 
-Target: 2:40–3:40.
+Target: 1:10–1:40.
 
-## 5. Infrastructure is code.
+## 5. One change. One PR conversation.
 
-Repeat the mental model and give a clear next step.
+Walk the PR rows. A small plan still needs review.
 
-Target: 3:40–4:10.
+Target: 1:40–2:30.
+
+## 6. Connect your platform tools.
+
+Introduce capability groups and concrete ecosystem integrations.
+
+Target: 2:30–2:55.
+
+## 7. Run Atlantis in your infrastructure.
+
+Explain deployment models and cloud examples without an installation tutorial.
+
+Target: 2:55–3:15.
+
+## 8. What the Atlantis community uses
+
+Separate 2024 survey evidence from current capabilities.
+
+Target: 3:15–3:45.
+
+## 9. Toward Atlantis 1.0.0
+
+Explain the proposed 1.0 direction without promising scope or timing.
+
+Target: 3:45–4:05.
+
+## 10. Infrastructure is code.
+
+Point to the URL, then land the final four phrases.
+
+Target: 4:05–4:35.
