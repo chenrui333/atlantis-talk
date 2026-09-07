@@ -14,7 +14,7 @@ The ten-slide deck uses the organizer's official 2026 PowerPoint template: its S
 - [Narrative outline](outline.md), [design lock](summary.md), [sources](sources.md), [validation](validation.md)
 - [Rehearsal practice and final critique](rehearsal.md)
 
-**4:30 target · 5:00 hard limit · 30-second margin.** The full script has 433 spoken words including transitions. The exact emergency cuts produce 397 words, approximately 3:18 at 130 words/minute including pauses. No live demo, animation or planned Q&A. Timing is modeled; rehearse aloud with a stopwatch.
+**4:30 target · 5:00 hard limit · 30-second margin.** The full script has 426 spoken words including transitions. The exact emergency cuts produce 403 words, approximately 3:21 at 130 words/minute including pauses. No live demo, animation or planned Q&A. Timing is modeled; rehearse aloud with a stopwatch.
 
 ## Regenerate
 

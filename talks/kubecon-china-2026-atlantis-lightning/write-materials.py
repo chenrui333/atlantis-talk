@@ -31,6 +31,8 @@ for i, slide in enumerate(slides, 1):
     words = len(spoken(slide).split())
     script += [f"## Slide {i} — {slide['title']}", '', f'Target: {stamp(elapsed)}–{stamp(end)} · {slide["seconds"]} seconds · {words} spoken words.', '', f'Cue: {slide["cue"]}', '', slide['narration'], '']
     script += [f'Transition: {slide["transition"]}' if slide['transition'] else ('Transition (not spoken): Hold the closing slide.' if i == len(slides) else 'Transition (not spoken): Advance after the final sentence.'), '', 'Emergency cut: ' + (' '.join(slide['emergency_skip']) if slide['emergency_skip'] else 'None; retain this slide’s narration.'), '']
+    if slide.get('reference_notes'):
+        script += ['Reference notes (not spoken): ' + slide['reference_notes'], '']
     timing += [f'| {i} | {slide["seconds"]}s | {stamp(elapsed)}–{stamp(end)} | {words} | {words * 60 / slide["seconds"]:.1f} wpm |']
     cues += [f'{i}. **{stamp(elapsed)} — {slide["title"]}** {slide["cue"]}', f'   Transition: “{slide["transition"]}”' if slide['transition'] else ('   Final line: “From the pull request.”' if i == len(slides) else '   Advance after the final sentence.'), '']
     outline += [f'## {i}. {slide["title"]}', '', slide['purpose'], '', f'Target: {stamp(elapsed)}–{stamp(end)}.', '']

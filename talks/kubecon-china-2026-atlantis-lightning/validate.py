@@ -14,6 +14,8 @@ with zipfile.ZipFile('slides.pptx') as z:
   words=' '.join(t.text or '' for t in note.findall('.//a:t',ns))
   assert n['narration'] in words,f'narration mismatch on slide {i}'
   assert n['transition'] in words
+  if n.get('reference_notes'):
+   assert n['reference_notes'] in words and n['reference_notes'] in script
   assert n['narration'] in script and n['transition'] in script, f'script mismatch on slide {i}'
  for name in z.namelist():
   if name.endswith('.rels'):

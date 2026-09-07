@@ -32,7 +32,7 @@ Point to the flow; do not read the host list.
 
 Target: 2:15–2:40.
 
-## 6. Give reviewers policy and cost context.
+## 6. Extend the pull-request review.
 
 Policy and cost are separate, optional review inputs.
 
@@ -44,7 +44,7 @@ Hosting choice does not determine provider support.
 
 Target: 3:00–3:20.
 
-## 8. What the Atlantis community uses
+## 8. Multiple stacks. One PR workflow.
 
 Say the year; point to the official survey blog.
 

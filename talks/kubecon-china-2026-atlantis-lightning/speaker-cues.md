@@ -5,7 +5,7 @@
 1. **0:00 — Atlantis** Define Atlantis before introducing the workflow.
    Advance after the final sentence.
 
-2. **0:20 — The pull request becomes the workflow.** Trace the numbered loop once; pause at review.
+2. **0:20 — The pull request becomes the workflow.** Trace the loop once; distinguish orchestration from provider/state execution.
    Advance after the final sentence.
 
 3. **1:10 — One change. One PR conversation.** Explain the engineer experience; do not repeat the architecture.
@@ -17,13 +17,13 @@
 5. **2:15 — Connect Git to your infrastructure tools.** Point to the flow; do not read the host list.
    Advance after the final sentence.
 
-6. **2:40 — Give reviewers policy and cost context.** Policy and cost are separate, optional review inputs.
+6. **2:40 — Extend the pull-request review.** Policy and cost are separate, optional review inputs.
    Advance after the final sentence.
 
 7. **3:00 — Run Atlantis in your infrastructure.** Hosting choice does not determine provider support.
    Advance after the final sentence.
 
-8. **3:20 — What the Atlantis community uses** Say the year; point to the official survey blog.
+8. **3:20 — Multiple stacks. One PR workflow.** Say the year; point to the official survey blog.
    Advance after the final sentence.
 
 9. **3:50 — Toward Atlantis 1.0.0** Keep project direction brief and explicitly provisional.

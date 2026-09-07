@@ -57,3 +57,7 @@ First-time attendee: definition arrives immediately and the workflow is explaine
 ## Distributed ten-slide revision — current
 
 Preserved the preceding ten-slide artifacts before editing. Merged old workflow-gap/plan/apply slides into one hero. Moved the PR example forward. Used the recovered space for distinct platform outcomes and optional policy/cost context. Core Git/IaC compatibility is now an editable flow. Removed the cloud-vendor list and shortened database and roadmap narration. Verified the China-specific Atlantis pavilion table and added it to the close. Final critique and repairs are in rehearsal.md; timing is 433 words / 4:30. This supersedes prior structural/timing observations.
+
+## Current information architecture pass
+
+Applied the representative-example rule. Removed the visible full Git host list and Terragrunt taxonomy; retained compatibility in non-spoken notes. Slide 6 now teaches extension categories and composition. Survey is a count plus two compact findings, with broader observations in narration. 1.0 is explained by the actual draft major-version rule. One question per slide now has a direct answer. No additions to the product catalog; closing information and archived reference deck preserved. Full narration is 426 words, still 4:30 with pauses.
