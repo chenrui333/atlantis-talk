@@ -11,7 +11,7 @@ Pronunciation: **Atlantis** (“at-LAN-tis”), **Terraform** (“TERRA-form”)
 
 ## Before leaving for the venue
 
-- Use the final organizer-template version once supplied. Current files are an interim design.
+- Use the delivered slides.pptx or slides.pdf; both now use the official organizer template.
 - Keep slides.pptx and slides.pdf locally, plus a second copy on a USB drive. All workflow visuals are static and embedded.
 - Open the deck in the actual presentation application and check presenter notes and the HDMI display. Use the PDF if presentation rendering fails; keep speaker-cues.md available separately.
 - Bring the laptop, charger and HDMI adapter. Use Light Mode as instructed by the organizers. Avoid notification interruptions during the talk.
@@ -32,4 +32,4 @@ Check in at the speaker desk at the back of the room, then use the reserved stag
 
 ## Pending organizer details
 
-The official template file is pending. The public schedule labels the session Chinese; the requested deck and narration are English. The June message directs PDF uploads to Sessionize, while the later project-talk message gives a separate upload route managed by the CNCF team. Confirm the language label and use the organizer's current submission instructions. This repository update does not submit the talk to the organizers.
+The public schedule labels the session Chinese; the requested deck and narration are English. The June message directs PDF uploads to Sessionize, while the later project-talk message gives a separate upload route managed by the CNCF team. Confirm the language label and use the organizer's current submission instructions. This repository update does not submit the talk to the organizers.

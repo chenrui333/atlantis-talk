@@ -30,3 +30,14 @@ Rebalanced the five slides to 0:35 / 1:05 / 1:00 / 1:25 / 0:30. The opening now 
 Removed the sentence about not needing a live terminal; it described the presentation rather than Atlantis. Kept generic-CI positioning brief. Hosting is explained alongside architecture, reducing the burden on the benefits slide. API and security updates remain a short closing segment of that slide.
 
 Full script: 554 words. Emergency: 448 words. Narration, exact emergency cuts, purposes and timing now share one source. Presenter notes include cumulative time and word count as well as narration. The emergency version is printed in full for rehearsal, not just listed as edits.
+
+
+## Final organizer-template version
+
+Applied the supplied official 2026 template, preserving its skyline cover and selecting its white content layouts. This resolves the prior template dependency. Full-resolution visual inspection of all five final pages found no remaining clipping or footer collisions after moving the benefits callouts and closing URL upward. The PR caption is now 18pt. The final QR was decoded from the exported closing slide.
+
+The first-time attendee gets the definition and problem in 35 seconds; the platform engineer gets the purpose-built CI distinction; the maintainer's approval, alpha-API and planning-trust caveats remain; the AV check confirms five 16:9 static pages with embedded fonts in the PDF. See validation.md for exact evidence and limits. Earlier draft observations above are historical and are superseded by this completed template revision.
+
+## Skill-guided final review
+
+Applied the four requested presentation skills. Locked narrative/design in summary.md, added stable C01–C17 claim references and an asset register in sources.md, preserved XML namespaces and removed unreachable package parts after the primary PPTX skill found two structural issues. Its template-baselined validator now passes. All five slides were re-rendered and inspected. Rehearsal.md records the final presentation critique and delivery practice; validation.md records the explicit per-slide QA.

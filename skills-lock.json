@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "skills": {
+    "giving-presentations": {
+      "source": "refoundai/lenny-skills",
+      "ref": "0123453c617e1114d3097380feffb09761ce824a",
+      "sourceType": "github",
+      "skillPath": "skills/giving-presentations/SKILL.md",
+      "computedHash": "cca5aede5d8f96d8823ec6d7264d613ce6b0b6f055a7d011c8b706218fbdf629"
+    },
+    "pptx": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "skillPath": "skills/pptx/SKILL.md",
+      "computedHash": "82eaf5daede5a1779aa17ccf06597cb209a0c2bd41d3a2f18bd45e0301a387fb"
+    },
+    "pptx-deck-context": {
+      "source": "wshobson/agents",
+      "sourceType": "github",
+      "skillPath": "plugins/pptx-deck-creation/skills/pptx-deck-context/SKILL.md",
+      "computedHash": "b2916c3041490bb38e9c6c057aa03c7abdba192041a9c3c57bd4c5dc49857222"
+    },
+    "pptx-visual-assets": {
+      "source": "wshobson/agents",
+      "sourceType": "github",
+      "skillPath": "plugins/pptx-deck-creation/skills/pptx-visual-assets/SKILL.md",
+      "computedHash": "ee017998817595f032c189d2e10a871359aae67f55dd8ebf79073522e2f5266d"
+    }
+  }
+}

@@ -1,53 +1,76 @@
 # Atlantis — KubeCon China 2026 Project Lightning Talk
 
-Five-minute project talk by Rui Chen, Atlantis Maintainer. September 8, 2026, 11:35–11:40 China Standard Time, Shanghai International Convention Center, 5F room 5B + C.
+Five-minute project talk by Rui Chen, Atlantis Maintainer. **September 8, 2026, 11:35–11:40 China Standard Time**, Shanghai International Convention Center, 5F room 5B + C.
 
-**Preparation in progress:** the five-slide content draft is ready. The final deck must use the organizer-provided `China_-_Branded_PowerPoint.pptx`; that attachment is pending. Current slides are an interim design, not the requested final conference-template deliverable. The interim PDF and five PNG previews have been rendered and inspected. Final template application remains pending. This is a content checkpoint; the organizer-template version is still pending.
+The five-slide deck uses the organizer's official 2026 PowerPoint template: its Shanghai skyline cover and white content layouts. All slides have been rendered, visually inspected and polished. The deck is ready for rehearsal and presentation; organizer submission has not been performed.
 
-## Rehearsal
+## Present and rehearse
 
-Target **4:35**, hard limit **5:00**, 25-second margin. Script: 554 spoken words including transitions. Exact emergency cuts yield 448 words, approximately 3:42 at 130 words/minute including pauses. No demo, animation or planned Q&A.
+- [PowerPoint](slides.pptx): editable text and diagrams; full presenter notes
+- [PDF safety copy](slides.pdf): embedded fonts, offline visuals and clickable project links
+- [Slide previews](slides-preview/): one PNG per slide
+- [Full script and emergency version](script.md)
+- [Timing](timing.md), [speaker cues](speaker-cues.md), [stage checklist](stage-checklist.md)
+- [Narrative outline](outline.md), [design lock](summary.md), [sources](sources.md), [validation](validation.md)
+- [Rehearsal practice and final critique](rehearsal.md)
 
-- [Full script](script.md)
-- [Timing](timing.md)
-- [Speaker cues](speaker-cues.md)
-- [Outline](outline.md)
-- [Sources and conference constraints](sources.md)
+**4:35 target · 5:00 hard limit · 25-second margin.** The full script has 554 spoken words including transitions. The exact emergency cuts produce 448 words, approximately 3:42 at 130 words/minute including pauses. No live demo, animation or planned Q&A. Timing is modeled; rehearse aloud with a stopwatch.
 
-## Current artifacts
+## Regenerate
 
-- [Editable PowerPoint](slides.pptx) with exact narration, timing, word counts and emergency cuts in notes
-- [Offline PDF](slides.pdf)
-- [Slide previews](slides-preview/)
-- [Presentation source](slides.mjs) and [narration source](narration.json)
-- [Stage checklist](stage-checklist.md)
-
-## Build
-
-Requirements: Node.js and Python 3. Dependencies are scoped to this directory and pinned in package-lock.json.
+Requirements: Node.js, npm, Python 3 and uv. The namespace-preserving template importer uses defusedxml 0.7.1 in an isolated uv environment. Run from this directory:
 
 ```sh
 npm ci --ignore-scripts
 python3 write-materials.py
 npm run build
+npm run validate
 ```
 
-`slides.mjs` is the editable presentation source; `narration.json` is the single source for spoken text and timing. Rebuild rehearsal documents after changing narration. All critical visuals are local.
+[slides.mjs](slides.mjs) generates native text, vector diagrams, embedded artwork and notes. [apply-template.py](apply-template.py) imports the official masters, layouts, theme and branding, scaling the template canvas uniformly to the deck's 16:9 canvas. The original template is retained at [assets/conference-template.pptx](assets/conference-template.pptx).
 
-## Rendering
+[narration.json](narration.json) is the single source for narration, timing, cues and emergency cuts. Run write-materials.py after editing it. The build embeds these notes automatically.
 
-PowerPoint for Mac export is provided by `render.applescript`, but macOS blocked Apple-event automation in this preparation environment. An isolated LibreOffice 7.3.7.2 renderer successfully exported the interim deck. The prepared renderer can be restarted with `docker start atlantis-slide-renderer-v2`. With it running, use:
+## Render PDF and previews
+
+With LibreOffice and Poppler (`pdftoppm`, `pdfinfo`) installed:
 
 ```sh
+npm run render
+```
+
+PowerPoint for Mac export is also supported by render.applescript when Apple-event automation is permitted. In this preparation environment macOS denied that permission, so the deck was opened and exported with LibreOffice 7.3.7.2 in an isolated container. The prepared local renderer can be reused:
+
+```sh
+docker start atlantis-slide-renderer-v2
 ATLANTIS_RENDER_CONTAINER=atlantis-slide-renderer-v2 npm run render
-npm run validate
+```
+
+That container mounts the repository at `/talk`. It is optional; it is not needed to present the delivered PPTX or PDF. PNG previews are 1921 × 1080. The PDF embeds Liberation Sans, the renderer's metrically compatible Arial substitute; editable PPTX text specifies Arial. No font download is needed during presentation.
+
+On macOS, test the generated QR and its final slide with:
+
+```sh
 swift check-qr.swift assets/qr.png slides-preview/05.png
 ```
 
-The container mounts the repository at `/talk`. A local LibreOffice installation is also supported by render.sh. PDF rendering substitutes and embeds Liberation Sans for Arial. Previews are 1921 × 1080 pixels. These are interim artifacts until the official template is applied.
+## Provenance and limitations
 
-## Assets and dependency notes
+Official Atlantis SVGs come from CNCF artwork. The conference template was supplied by the organizers and provided by Rui; its original branding is preserved. See [sources](sources.md#a01--artwork-provenance). Text and diagrams remain editable; original conference artwork is embedded in its supplied form.
 
-Official Atlantis SVG assets come from CNCF artwork; see [provenance](sources.md#artwork-provenance). The QR points directly to the official homepage. Arial is used for portable editable text; the PDF will be the font-stable safety copy.
+PptxGenJS 4.0.1 and qrcode 1.5.4 are pinned. npm audit reports image-size parser advisories inherited through PptxGenJS. This fixed-asset build uses retained official SVGs and locally generated PNG, not the affected ICNS/JXL/HEIF formats. Do not treat the generator as an arbitrary-image upload service.
 
-PptxGenJS 4.0.1 generates editable native shapes, text and notes; qrcode 1.5.4 generates the local QR. npm audit reports high-severity image-size parser advisories inherited through PptxGenJS; the build uses only the retained official SVGs and locally generated PNG, never arbitrary uploaded images or affected ICNS/JXL/HEIF formats. No compatible patched image-size version was available when checked; no unrelated dependencies were changed.
+The two unresolved conference details are the schedule's Chinese language label (this deck and script are English) and the final organizer upload route. See stage-checklist.md. Present from the supplied files after the normal laptop/projector check.
+
+## Skill-guided QA
+
+The four requested skills were installed locally with skills.sh. Provenance and hashes are recorded in the root skills-lock.json; downloaded skill payloads stay untracked. giving-presentations uses its last original revision because current upstream reorganized that skill. They supplement the official template; none supplies a replacement theme.
+
+From the repository root, after restoring the workspace skills:
+
+```sh
+npx skills experimental_install
+uv run --with defusedxml==0.7.1 --with lxml==6.0.2 python .agents/skills/pptx/scripts/office/validate.py talks/kubecon-china-2026-atlantis-lightning/slides.pptx --original talks/kubecon-china-2026-atlantis-lightning/assets/conference-template.pptx
+```
+
+The primary PPTX skill's validator checks against the original template. Then render every slide using the commands above and inspect the full-size PNGs. See validation.md for the final result and specific slide checks.
