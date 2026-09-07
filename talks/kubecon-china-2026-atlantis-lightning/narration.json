@@ -32,19 +32,15 @@
     "purpose": "Make the interaction concrete without suggesting a short plan summary proves safety."
   },
   {
-    "title": "A shared workflow. A platform you control.",
-    "seconds": 85,
-    "cue": "Visible \u2192 controlled \u2192 collaborative. Last 25 seconds: current project signals.",
-    "narration": "First, visibility: the plan and execution results sit beside the code review. Second, control: the platform team configures credentials, approval requirements, and optional policy checks. Atlantis project locks help coordinate competing pull requests. Third, collaboration: developers can propose changes through a familiar workflow, without each person needing a privileged workstation. You could build this in generic CI. Atlantis packages the PR interaction, planning, applying, and locking into a purpose-built service. The core workflow needs no separate Atlantis SaaS control plane. Your Git host, state backend, and cloud services remain part of the system. This still runs powerful code: even planning can execute code. Trusted repositories, restricted permissions, and a maintained deployment remain essential. The project continues to evolve for Terraform and OpenTofu users. Recent work includes alpha APIs for drift workflows; version zero point forty-seven added richer drift plan output. The latest release, zero point forty-seven point one, fixes a command-injection vulnerability. These are useful updates for existing operators. For a new team, the starting point is still the pull request.",
-    "transition": "And that is the idea to take away.",
+    "title": "Atlantis in the IaC ecosystem",
+    "seconds": 60,
+    "cue": "Left: current integrations. Right: 2024 survey, not market share.",
+    "narration": "Atlantis fits a broader infrastructure stack. Today, it connects to several Git hosts, runs Terraform or OpenTofu, and supports Terragrunt through custom workflows. The project's 2024 survey received three hundred fifty-four responses. GitHub led, with a sizeable GitLab group, followed by Bitbucket and others. Terraform dominated; about half also used Terragrunt, and OpenTofu was gaining ground. Kubernetes and AWS were common deployment environments. These are survey responses, not a measure of market share. Atlantis gives those tools a shared pull-request workflow. Terragrunt is an optional workflow integration, not an infrastructure target.",
+    "transition": "Whatever combination you run underneath, the idea stays the same: infrastructure changes belong in code review.",
     "emergency_skip": [
-      "You could build this in generic CI.",
-      "Atlantis packages the PR interaction, planning, applying, and locking into a purpose-built service.",
-      "Your Git host, state backend, and cloud services remain part of the system.",
-      "Recent work includes alpha APIs for drift workflows; version zero point forty-seven added richer drift plan output.",
-      "These are useful updates for existing operators."
+      "Terragrunt is an optional workflow integration, not an infrastructure target."
     ],
-    "purpose": "Explain the platform benefit, the purpose-built choice, and verified current development."
+    "purpose": "Show current ecosystem fit alongside clearly dated first-party survey evidence."
   },
   {
     "title": "Infrastructure is code.",

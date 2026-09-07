@@ -65,13 +65,34 @@ const rows=[['Atlantis','Plan: 0 to add, 1 to change, 0 to destroy',C.blue],['Re
 rows.forEach((r,i)=>{let y=3.52+i*.65;text(s,r[0],1.04,y,1.65,.4,21,C.muted);text(s,r[1],3.0,y,9.2,.4,25,r[2],{bold:i===0||i===2});});
 text(s,'Illustrative PR · approval requirement configured · apply before merge',1.02,6.02,11.3,.30,18,C.muted);addNotes(s,3);
 }
-// 4 — Three parallel reasons, no feature matrix.
+// 4 — Current integrations and separately dated first-party survey evidence.
 {
-const s=base(4,'Why platform teams choose it','A shared workflow. A platform you control.');
-const cards=[['01','Visible','Plan + execution results\nbeside the code review.'],['02','Controlled','Configured approvals,\npolicies + project locks.'],['03','Collaborative','Developers propose.\nThe platform runs it.']];
-cards.forEach((r,i)=>{const x=.7+i*4.06;box(s,x,2.62,3.82,2.48);text(s,r[0],x+.23,2.85,3,.38,20,C.blue);text(s,r[1],x+.23,3.48,3.4,.45,29,C.text,{bold:true});text(s,r[2],x+.23,4.25,3.4,.72,22,C.muted);});
-text(s,'Self-hosted · Kubernetes / Helm, or a server',.7,5.46,12,.45,26,C.blue,{bold:true});
-text(s,'Today: alpha drift APIs · v0.47.1 command-injection fix',.7,6.02,12,.35,19,C.muted);addNotes(s,4);
+const s=base(4,'Ecosystem + community','Atlantis in the IaC ecosystem');
+text(s,'CURRENT INTEGRATIONS',.7,2.14,7.0,.3,17,C.blue,{bold:true});
+box(s,.7,2.42,7.05,1.00);
+text(s,'Git providers',.9,2.51,6.65,.32,23,C.text,{bold:true});
+text(s,'GitHub · GitLab · Gitea / Forgejo\nBitbucket Cloud / Server · Azure DevOps',.9,2.90,6.65,.44,18,C.muted);
+line(s,4.22,3.46,0,.25,C.blue,true);
+box(s,.7,3.78,7.05,.72);
+text(s,'Atlantis',.9,3.94,2.1,.36,27,C.text,{bold:true});
+text(s,'Plan → review → apply',3.09,3.97,4.4,.32,23,C.blue,{bold:true});
+line(s,4.22,4.55,0,.25,C.blue,true);
+box(s,.7,4.86,7.05,.99);
+text(s,'IaC execution: Terraform / OpenTofu',.9,4.99,6.65,.37,24,C.text,{bold:true});
+text(s,'Optional: Terragrunt via custom workflows',.9,5.49,6.65,.29,19,C.muted);
+line(s,4.22,5.89,0,.24,C.blue,true);
+text(s,'Infrastructure · via provider APIs',.9,6.19,6.65,.36,24,C.text,{bold:true,align:'center'});
+box(s,8.12,2.13,4.5,4.56);
+text(s,'Atlantis User Survey · 2024 · n=354',8.3,2.25,4.14,.3,17,C.blue,{bold:true});
+text(s,'354',8.3,2.69,4.1,.65,54,C.text,{bold:true});
+text(s,'survey responses',8.3,3.36,4.1,.32,23,C.muted);
+text(s,'GIT',8.3,3.80,4.1,.25,18,C.blue,{bold:true});
+text(s,'GitHub leads · GitLab sizeable\nBitbucket + others',8.3,4.10,4.1,.55,19,C.text);
+text(s,'IaC',8.3,4.73,4.1,.25,18,C.blue,{bold:true});
+text(s,'Terraform dominant\nAbout half also use Terragrunt\nOpenTofu gaining ground',8.3,5.06,4.1,.78,19,C.text);
+text(s,'RUNTIME',8.3,5.94,4.1,.25,18,C.blue,{bold:true});
+text(s,'Kubernetes / AWS common',8.3,6.25,4.1,.26,19,C.text);
+addNotes(s,4);
 }
 // 5 — QR is generated locally with a four-module quiet zone.
 {

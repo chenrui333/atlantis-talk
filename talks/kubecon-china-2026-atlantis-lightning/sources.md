@@ -1,6 +1,6 @@
 # Sources and factual decisions
 
-Verified September 7, 2026. Only official Atlantis, CNCF, GitHub project metadata and Linux Foundation sources support the talk. No vanity statistics are used. The PR is a reconstruction, not a screenshot of a real change.
+Verified September 7, 2026. Only official Atlantis, CNCF, GitHub project metadata and Linux Foundation sources support the talk. Survey evidence is dated and scoped to respondents. The PR is a reconstruction, not a screenshot of a real change.
 
 ## Claim ledger
 
@@ -26,7 +26,7 @@ Verified September 7, 2026. Only official Atlantis, CNCF, GitHub project metadat
 
 ## Researched and intentionally omitted
 
-- GitHub, GitLab, Bitbucket Cloud/Server, Gitea, Azure DevOps are listed in [Requirements](https://www.runatlantis.io/docs/requirements). No feature-parity claim; the host matrix would distract from the workflow.
+- Current Git host integrations are grouped on slide 4; see P01 below. No feature-parity claim.
 - `depends_on`, execution ordering, parallel plan/apply and automatic discovery are documented in [repository configuration](https://www.runatlantis.io/docs/repo-level-atlantis-yaml). No YAML on stage.
 - [Terraform Cloud/Enterprise interoperability](https://www.runatlantis.io/docs/terraform-cloud) is supported subject to backend/workspace configuration. Omitted from the lightning narrative.
 - Drift detection/remediation APIs require external callers and configuration; API schemas are alpha. No automatic continuous-reconciliation promise.
@@ -65,4 +65,28 @@ That message confirms 16:9 slides, the speaker's own laptop and HDMI adapter, pr
 | A03 / assets/qr.png | Generated locally by qrcode from https://www.runatlantis.io/; no external visual copied. | content; slide 5 bbox x=9.12, y=2.44, w=h=3.30 inches; four-module white quiet zone; alt: QR code for https://www.runatlantis.io/. |
 | A04 / native diagram and PR reconstruction | Authored for this talk; no screenshot or external diagram copied. | content; slides 2 and 3. Text, arrows, nodes and PR rows are editable PowerPoint objects; reading order follows numbered steps. |
 
-assets/atlantis-wordmark.svg is retained source artwork but is not placed in the final deck. There are no quantitative survey/adoption claims, inferred chart values or third-party infographics. C07's plan counts are explicitly illustrative.
+assets/atlantis-wordmark.svg is retained source artwork but is not placed in the final deck. The only exact survey count is 354 responses (S01); no chart values are inferred and no third-party infographic is used. C07's plan counts are explicitly illustrative.
+
+## Slide 4 — 2024 survey evidence (S01–S05)
+
+Primary source: [Atlantis User Survey Results, 2024](https://www.runatlantis.io/blog/2024/april-2024-survey-results). Re-read September 7, 2026. The survey opened in April 2024 for two months. This is community respondent evidence, not a 2026 survey, representative market share, a count of organizations or total installations. No chart-image percentages were estimated.
+
+| ID | Source section | Supported slide/narration wording |
+| --- | --- | --- |
+| S01 | Introduction | 354 responses; displayed as survey responses rather than a verified count of unique users. |
+| S02 | Which Version Control Systems (VCSs) do you use? | GitHub leads; GitLab has a sizeable group; Bitbucket and other systems follow. |
+| S03 | What Infrastructure as Code (IaC) tool(s) do you use with Atlantis? | Terraform dominates; about half additionally use Terragrunt; OpenTofu was gaining ground. These are the project's qualitative descriptions, not recovered exact percentages. |
+| S04 | How do you/your organization deploy Atlantis | Kubernetes and/or AWS are common deployment environments. The prose uses “users of terraform” within this Atlantis deployment question; avoid claiming an exact share or mutually exclusive categories. |
+| S05 | What is the most important feature you find missing from Atlantis? | Drift detection and infrastructure improvements led normalized free-text requests. Retained as background only; not on the slide or in timed narration. |
+
+The visible label is **Atlantis User Survey · 2024 · n=354**. The survey panel reports tool usage among respondents; the ecosystem diagram separately describes today's integration options.
+
+## Slide 4 — Current product capabilities, verified September 7, 2026
+
+| ID | Capability / boundary | Current official source |
+| --- | --- | --- |
+| P01 | GitHub, GitLab, Gitea and compatible forks such as Forgejo, Bitbucket Cloud, Bitbucket Server, Azure DevOps. No feature-parity guarantee across hosts. | [Requirements: Git Host](https://www.runatlantis.io/docs/requirements#git-host) |
+| P02 | Project terraform_distribution selects terraform or opentofu. | [Terraform Distributions](https://www.runatlantis.io/docs/repo-level-atlantis-yaml#terraform-distributions) |
+| P03 | Terragrunt works through custom plan/apply commands and requires its binary. It is an optional execution wrapper/workflow pattern, not an infrastructure target or a Git provider. | [Custom Workflows: Terragrunt](https://www.runatlantis.io/docs/custom-workflows#terragrunt) |
+
+C08–C10 and C13–C15 remain researched operator background; their platform-value and release-detail narration was removed from slide 4. Current development and the security advisory are retained above for reference, not represented as survey findings. The slide 4 native execution box nests the optional Terragrunt workflow label under Terraform/OpenTofu; the provider-API arrow leads to infrastructure. Review remains the PR action already explained on slide 2.

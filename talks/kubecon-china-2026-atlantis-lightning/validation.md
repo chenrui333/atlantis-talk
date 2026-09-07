@@ -4,7 +4,7 @@ Validated September 7, 2026 after applying the supplied official 2026 template.
 
 | Requirement | Evidence / result |
 | --- | --- |
-| Five-minute limit | Five slides; 554 spoken words; 4:35 planned; 25s safety margin. Exact 448-word emergency script is included. Actual delivery requires Rui's timed rehearsal. |
+| Five-minute limit | Five slides; 482 spoken words; 4:10 planned; 50s safety margin. Exact 423-word emergency script is included. Actual delivery requires Rui's timed rehearsal. |
 | Official template | Imported original master and layouts; template layout 2 on the cover, layout 5 on slides 2–5. Original template is retained, with provenance in sources.md. |
 | Editable PPTX | PptxGenJS native text and diagram shapes; imported native template masters. All five notes match narration.json, including transition and timing metadata. |
 | PPTX opens | LibreOffice 7.3.7.2 loaded the final PPTX and exported all five slides. PowerPoint automation was denied by macOS, so native PowerPoint rendering was not independently tested. |
@@ -38,7 +38,17 @@ Rendered the repaired final PPTX through LibreOffice to a new five-page PDF and 
 | 1 | Full accepted title fits; white text is clear on original skyline background; event marks and Atlantis icon are crisp and not stretched. No content intersects the skyline. |
 | 2 | Nodes and arrows align; arrowheads do not cross labels. Terraform/OpenTofu and Provider APIs fit their boxes. Footer has clear separation. No rasterized process labels. |
 | 3 | All four PR rows fit; plan summary and apply command are large. Illustrative/configured-approval caption is 18pt and stays inside the panel. Footer does not collide. |
-| 4 | Three equal cards align; benefit labels and two-line descriptions fit. Hosting and current-project lines stay above the footer. Current-project text is 19pt; three benefits retain visual priority. |
+| 4 | Native ecosystem diagram on the left; dated survey evidence on the right. Optional Terragrunt label stays inside execution. Findings are 19pt; count is 54pt. Final spacing reserves the official footer. |
 | 5 | Closing phrases and both visible URLs fit. QR quiet zone is unobstructed, high contrast and independently decoded. Official footer stays unchanged. |
 
 The small 12pt slide numbers and 16pt section metadata are nonessential; main content meets the larger conference-size typography target. All original conference media retained in the final package match their source bytes. The public-facing design is unchanged by the package repairs. Content QA found no lorem ipsum, TODO or unfilled insert markers. Narration and transitions are verified against both embedded notes and script.md. See rehearsal.md for the final five-perspective critique and timed practice instructions. Actual human delivery remains unmeasured.
+
+## Ecosystem and survey final content pass
+
+Slide 4 alone changed visually. Its 107-word narration is allocated 60 seconds, reducing the whole talk to 482 words / 4:10 with 50 seconds margin. All other slides keep their narration and visual content; slide 5 timing metadata moves to 3:40–4:10. script.md mirrors the embedded notes. The emergency script has 423 words (about 3:30).
+
+Verified the 2024 survey's 354 response count directly in the official prose. Git, IaC and deployment findings are qualitative; no chart percentages inferred. sources.md separates S01–S05 historical evidence from P01–P03 current capabilities. No survey finding is presented as 2026 market share.
+
+Rebuilt the PPTX, exported a fresh five-page PDF and rendered all five images. The first slide 4 render had cramped spacing near the footer and between findings; moved diagram content upward and spaced the survey groups before the final render. Final QA checks the unchanged official masters, native diagram objects, embedded notes, template-baselined schema, all preview pages and the rendered QR. The final critique is that the slide now answers ecosystem breadth with concrete respondent evidence while leaving the plan/review/apply mental model intact.
+
+Final results: primary PPTX skill validator with the original template **passed**; local notes/package checks **passed**; QR decoding from the source PNG and full closing slide **passed**. All five final images were explicitly inspected. Byte comparison against the preceding committed deck confirms that the official master/layout/theme XML and slide XML/previews for slides 1, 2, 3 and 5 are unchanged. Only slide 4 is visually revised. All changes are confined to this talk directory.

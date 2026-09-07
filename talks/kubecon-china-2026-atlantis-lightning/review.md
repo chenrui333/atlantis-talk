@@ -41,3 +41,9 @@ The first-time attendee gets the definition and problem in 35 seconds; the platf
 ## Skill-guided final review
 
 Applied the four requested presentation skills. Locked narrative/design in summary.md, added stable C01–C17 claim references and an asset register in sources.md, preserved XML namespaces and removed unreachable package parts after the primary PPTX skill found two structural issues. Its template-baselined validator now passes. All five slides were re-rendered and inspected. Rehearsal.md records the final presentation critique and delivery practice; validation.md records the explicit per-slide QA.
+
+## Final ecosystem + survey revision
+
+Supersedes the previous slide 4 benefits/release layout. Retained five slides and the official template. Added a native current-integrations diagram beside the official 2024 survey's 354 responses and three qualitative findings. Source discipline separates historical observations from 2026 capabilities and avoids invented chart percentages. Terragrunt is nested in execution as an optional custom workflow.
+
+First-time attendee: the main workflow remains on slides 2–3. Platform engineer: grouped Git hosts and selectable execution tools demonstrate ecosystem breadth. Maintainer: historical survey findings are not a current feature matrix or market-share estimate; Terragrunt is not a provider. AV technician: no extra logos, 19pt survey findings, clear footer space after a spacing repair. Speaker: slide 4 is now 107 words / 60 seconds; total 482 words / 4:10. Optional sentence cut is mirrored in script.md and notes.

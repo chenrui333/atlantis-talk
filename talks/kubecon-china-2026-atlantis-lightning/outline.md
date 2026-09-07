@@ -20,14 +20,14 @@ Make the interaction concrete without suggesting a short plan summary proves saf
 
 Target: 1:40–2:40.
 
-## 4. A shared workflow. A platform you control.
+## 4. Atlantis in the IaC ecosystem
 
-Explain the platform benefit, the purpose-built choice, and verified current development.
+Show current ecosystem fit alongside clearly dated first-party survey evidence.
 
-Target: 2:40–4:05.
+Target: 2:40–3:40.
 
 ## 5. Infrastructure is code.
 
 Repeat the mental model and give a clear next step.
 
-Target: 4:05–4:35.
+Target: 3:40–4:10.

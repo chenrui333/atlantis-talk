@@ -4,7 +4,7 @@ Locked September 7, 2026 before the skill-guided implementation/QA pass.
 
 ## Audience and outcome
 
-Rui Chen's five-minute project spotlight addresses platform engineers, SREs and cloud-native developers, including people new to Atlantis. English; five slides; 4:35 planned delivery. The user-selected custom narrative is definition/problem → workflow → PR example → platform value/current project → close. No agenda, live demo, survey, adoption chart or competitor matrix.
+Rui Chen's five-minute project spotlight addresses platform engineers, SREs and cloud-native developers, including people new to Atlantis. English; five slides; 4:10 planned delivery. The user-selected custom narrative is definition/problem → workflow → PR example → ecosystem/survey evidence → close. No agenda, live demo, adoption chart or competitor matrix. Slide 4 adds dated first-party survey evidence.
 
 One remembered idea: Atlantis is an open-source service that runs Terraform/OpenTofu plans and applies from pull requests.
 
@@ -15,10 +15,10 @@ One remembered idea: Atlantis is an open-source service that runs Terraform/Open
 | 1 | Atlantis connects infrastructure execution to code review. | C01, C02, C03, C11, E01 | Exact accepted title, official skyline, Atlantis icon |
 | 2 | The PR is the shared workflow; Atlantis executes the tools. | C01, C04, C05, C06, C11, C12 | Native editable nodes, numbered arrows, review/apply loop |
 | 3 | Engineers review and apply one change in one PR conversation. | C05, C06, C07 | Native text/shape PR reconstruction; counts explicitly illustrative |
-| 4 | Platform teams configure a shared execution workflow. | C08–C15 | Three benefit cards plus current release signal |
+| 4 | Atlantis fits a broad IaC ecosystem used by survey respondents. | S01–S04; P01–P03 | Native ecosystem diagram beside a clearly dated 2024 survey panel |
 | 5 | Plan, review and apply from the PR; try the project. | C01, C16, C17 | Large closing words, direct homepage QR and GitHub link |
 
-Claim IDs resolve in [sources.md](sources.md). PR counts are invented example data, not a survey or adoption metric. Any future quantitative adoption claim must add exact source values and methodology there before it enters the deck; never read values approximately from chart images.
+Claim IDs resolve in [sources.md](sources.md). Slide 3 PR counts are illustrative. Slide 4 reports 354 survey responses; its remaining findings use the project’s qualitative wording. Any future quantitative adoption claim must add exact source values and methodology there before it enters the deck; never read values approximately from chart images.
 
 ## Design authority
 

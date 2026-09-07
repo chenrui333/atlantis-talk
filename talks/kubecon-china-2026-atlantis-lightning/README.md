@@ -14,7 +14,7 @@ The five-slide deck uses the organizer's official 2026 PowerPoint template: its 
 - [Narrative outline](outline.md), [design lock](summary.md), [sources](sources.md), [validation](validation.md)
 - [Rehearsal practice and final critique](rehearsal.md)
 
-**4:35 target · 5:00 hard limit · 25-second margin.** The full script has 554 spoken words including transitions. The exact emergency cuts produce 448 words, approximately 3:42 at 130 words/minute including pauses. No live demo, animation or planned Q&A. Timing is modeled; rehearse aloud with a stopwatch.
+**4:10 target · 5:00 hard limit · 50-second margin.** The full script has 482 spoken words including transitions. The exact emergency cuts produce 423 words, approximately 3:30 at 130 words/minute including pauses. No live demo, animation or planned Q&A. Timing is modeled; rehearse aloud with a stopwatch.
 
 ## Regenerate
 
