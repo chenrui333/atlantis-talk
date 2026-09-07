@@ -14,7 +14,7 @@ The ten-slide deck uses the organizer's official 2026 PowerPoint template: its S
 - [Narrative outline](outline.md), [design lock](summary.md), [sources](sources.md), [validation](validation.md)
 - [Rehearsal practice and final critique](rehearsal.md)
 
-**4:35 target · 5:00 hard limit · 25-second margin.** The full script has 489 spoken words including transitions. The exact emergency cuts produce 456 words, approximately 3:45 at 130 words/minute including pauses. No live demo, animation or planned Q&A. Timing is modeled; rehearse aloud with a stopwatch.
+**4:30 target · 5:00 hard limit · 30-second margin.** The full script has 433 spoken words including transitions. The exact emergency cuts produce 397 words, approximately 3:18 at 130 words/minute including pauses. No live demo, animation or planned Q&A. Timing is modeled; rehearse aloud with a stopwatch.
 
 ## Regenerate
 
@@ -76,3 +76,11 @@ uv run --with defusedxml==0.7.1 --with lxml==6.0.2 python .agents/skills/pptx/sc
 The primary PPTX skill's validator checks against the original template. Then render every slide using the commands above and inspect the full-size PNGs. See validation.md for the final result and specific slide checks.
 
 The ten-slide introduction follows Rui’s revised direction. It exceeds the organizer’s earlier 3–5-slide guidance; this departure still needs organizer acceptance. The official template and five-minute time limit remain unchanged.
+
+## Preserved reference version
+
+The preceding ten-slide version is archived as [slides-expanded.pptx](slides-expanded.pptx), [slides-expanded.pdf](slides-expanded.pdf), [slides-expanded.mjs](slides-expanded.mjs), [script-expanded.md](script-expanded.md), and narration-expanded.json. The primary slides.pptx is the revised ten-slide narrative, following Rui’s final instruction to retain ten slides and distribute information. Neither is a five-slide organizer-compliant deck.
+
+Regenerate the reference PPTX from this directory with `node slides-expanded.mjs`; it reads narration-expanded.json and writes only slides-expanded.pptx. The preserved PDF is the original export. The main `npm run build` and `npm run render` commands operate on the revised deck.
+
+Onsite discovery is verified: **Project Pavilion, T-10, September 8, 10:30–14:30, Grand Ballroom I**. The closing slide includes the table and time.

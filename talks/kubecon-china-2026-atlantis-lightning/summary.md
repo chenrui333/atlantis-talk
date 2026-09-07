@@ -1,18 +1,11 @@
 # Narrative and design lock
 
-Ten-slide introduction requested by Rui; official 2026 template; 16:9; English. Main idea: Atlantis runs Terraform/OpenTofu plan and apply from pull requests. Survey and draft roadmap support this introduction.
+Rui’s final instruction retains ten slides with information distributed by purpose. This supersedes the five-slide specification earlier in the same message. The preserved expanded artifacts contain the preceding ten-slide version. Both versions retain the organizer’s official template; ten slides still depart from its 3–5-slide guidance.
 
-1. **Atlantis** Start with the definition. (15s)
-2. **Code review needs the execution result.** Point to the missing plan and result. (20s)
-3. **Open a PR. See the plan.** Trace the webhook and return arrow. (35s)
-4. **Review it. Request the apply.** Review stays in Git; execution runs on Atlantis. (30s)
-5. **One change. One PR conversation.** Walk the PR rows. A small plan still needs review. (50s)
-6. **Connect your platform tools.** Introduce capability groups and concrete ecosystem integrations. (25s)
-7. **Run Atlantis in your infrastructure.** Explain deployment models and cloud examples without an installation tutorial. (20s)
-8. **What the Atlantis community uses** Separate 2024 survey evidence from current capabilities. (30s)
-9. **Toward Atlantis 1.0.0** Explain the proposed 1.0 direction without promising scope or timing. (20s)
-10. **Infrastructure is code.** Point to the URL, then land the final four phrases. (30s)
+Framework: user-selected introduction → complete workflow → engineer experience → platform outcomes → core tools → optional review inputs → deployment → survey evidence → brief project direction → discovery and closing.
 
-The skyline cover uses original layout 2; all content uses original white layout 5. Native diagrams remain editable. Arial, dark teal and the original branding are retained. Common content margin is 0.62 inches. Main text is generally 22–36pt or larger; footer metadata is nonessential. Conftest and Infracost are labeled by purpose, not depicted as Terraform providers. Hosting choices have their own slide. Sources map to current slide numbers in sources.md.
+The main idea remains: Atlantis runs Terraform/OpenTofu plan and apply from pull requests. The architecture is explained once on slide 2; the PR example owns operational judgment. Git/tool compatibility and optional Conftest/Infracost are separate slides. Deployment no longer lists cloud vendors. Survey and provisional 1.0 context retain their own short slides. See outline.md for exact times.
 
-Applied the installed pptx, pptx-deck-context, pptx-visual-assets and giving-presentations skills. Ten slides depart from the organizer's earlier 3–5 guidance at Rui's direction; no skill overrides the event template.
+Design authority: original skyline layout 2, white content layout 5, unchanged masters and theme. Arial, dark teal, 0.62-inch content margin, generally 22pt+ body text. Native editable arrows connect tools and review context. Official logo and QR retain aspect ratio. No replacement palette, raster diagrams, decorative art or vendor-logo collage.
+
+Applied pptx, pptx-deck-context, pptx-visual-assets and giving-presentations as complementary layers. Sources use stable claim IDs. No chart-derived percentages. The source manifest separates current capabilities, 2024 survey observations and the unmerged 1.0 proposal.

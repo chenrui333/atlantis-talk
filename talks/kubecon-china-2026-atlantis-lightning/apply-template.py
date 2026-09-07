@@ -4,9 +4,13 @@ The organizer's 10-inch canvas is uniformly scaled to the generated 13⅓-inch
 canvas. The source template is never modified. Only reachable parts are kept.
 """
 import json
+import sys
 import posixpath
 import zipfile
 from defusedxml.minidom import parseString
+
+deck_path = sys.argv[1] if len(sys.argv) > 1 else 'slides.pptx'
+notes_path = sys.argv[2] if len(sys.argv) > 2 else 'narration.json'
 
 P = 'http://schemas.openxmlformats.org/presentationml/2006/main'
 R = 'http://schemas.openxmlformats.org/package/2006/relationships'
@@ -24,7 +28,7 @@ def target_of(owner, target):
 def rels_for(part):
     return posixpath.join(posixpath.dirname(part), '_rels', posixpath.basename(part) + '.rels')
 
-with zipfile.ZipFile('slides.pptx') as z:
+with zipfile.ZipFile(deck_path) as z:
     output = {n: z.read(n) for n in z.namelist() if not n.endswith('/')}
 with zipfile.ZipFile('assets/conference-template.pptx') as z:
     template = {n: z.read(n) for n in z.namelist() if not n.endswith('/')}
@@ -82,7 +86,7 @@ for rel in elements(rels, R, 'Relationship'):
         rel.setAttribute('Target', 'slideMasters/conference_slideMaster1.xml')
 output['ppt/_rels/presentation.xml.rels'] = encode(rels)
 
-for i, layout in enumerate([2] + [5] * (len(json.load(open('narration.json'))) - 1), 1):
+for i, layout in enumerate([2] + [5] * (len(json.load(open(notes_path))) - 1), 1):
     part = f'ppt/slides/slide{i}.xml'
     doc = parseString(output[part])
     common = elements(doc, P, 'cSld')[0]
@@ -118,7 +122,7 @@ for entry in elements(content_types, CT, 'Override'):
     if entry.getAttribute('PartName').lstrip('/') not in reachable:
         entry.parentNode.removeChild(entry)
 output['[Content_Types].xml'] = encode(content_types)
-with zipfile.ZipFile('slides.pptx', 'w', zipfile.ZIP_DEFLATED) as z:
+with zipfile.ZipFile(deck_path, 'w', zipfile.ZIP_DEFLATED) as z:
     for name in sorted(reachable):
         z.writestr(name, output[name])
 print('Applied official masters; preserved namespaces; removed unreachable parts.')

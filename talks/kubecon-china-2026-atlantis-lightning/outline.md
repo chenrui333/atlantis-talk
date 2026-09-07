@@ -4,60 +4,60 @@ Atlantis runs Terraform/OpenTofu plans and applies from pull requests. Every sli
 
 ## 1. Atlantis
 
-Start with the definition.
+Define Atlantis before introducing the workflow.
 
-Target: 0:00–0:15.
+Target: 0:00–0:20.
 
-## 2. Code review needs the execution result.
+## 2. The pull request becomes the workflow.
 
-Point to the missing plan and result.
+Trace the numbered loop once; pause at review.
 
-Target: 0:15–0:35.
+Target: 0:20–1:10.
 
-## 3. Open a PR. See the plan.
+## 3. One change. One PR conversation.
 
-Trace the webhook and return arrow.
+Explain the engineer experience; do not repeat the architecture.
 
-Target: 0:35–1:10.
+Target: 1:10–1:50.
 
-## 4. Review it. Request the apply.
+## 4. Shared review. Controlled execution.
 
-Review stays in Git; execution runs on Atlantis.
+Three outcomes; centralized execution is not a security guarantee.
 
-Target: 1:10–1:40.
+Target: 1:50–2:15.
 
-## 5. One change. One PR conversation.
+## 5. Connect Git to your infrastructure tools.
 
-Walk the PR rows. A small plan still needs review.
+Point to the flow; do not read the host list.
 
-Target: 1:40–2:30.
+Target: 2:15–2:40.
 
-## 6. Connect your platform tools.
+## 6. Give reviewers policy and cost context.
 
-Introduce capability groups and concrete ecosystem integrations.
+Policy and cost are separate, optional review inputs.
 
-Target: 2:30–2:55.
+Target: 2:40–3:00.
 
 ## 7. Run Atlantis in your infrastructure.
 
-Explain deployment models and cloud examples without an installation tutorial.
+Hosting choice does not determine provider support.
 
-Target: 2:55–3:15.
+Target: 3:00–3:20.
 
 ## 8. What the Atlantis community uses
 
-Separate 2024 survey evidence from current capabilities.
+Say the year; point to the official survey blog.
 
-Target: 3:15–3:45.
+Target: 3:20–3:50.
 
 ## 9. Toward Atlantis 1.0.0
 
-Explain the proposed 1.0 direction without promising scope or timing.
+Keep project direction brief and explicitly provisional.
 
-Target: 3:45–4:05.
+Target: 3:50–4:05.
 
 ## 10. Infrastructure is code.
 
-Point to the URL, then land the final four phrases.
+Point to discovery links, then hold the final slide.
 
-Target: 4:05–4:35.
+Target: 4:05–4:30.

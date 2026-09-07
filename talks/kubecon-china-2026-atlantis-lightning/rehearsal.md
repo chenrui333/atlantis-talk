@@ -1,9 +1,15 @@
-# Rehearsal
+# Rehearsal and final critique
 
-Target 4:35; hard stop 5:00. Ten static slides reveal one idea at a time. Full notes and emergency cuts are mirrored in script.md. Timing is modeled, not an observed Rui rehearsal.
+433 words; target 4:30, hard stop 5:00. The emergency script has 397 words, estimated 3:18 at 130 wpm plus 15 seconds of pauses. These are modeled times, not an observed Rui rehearsal.
 
-Practice the definition and final line first. Then run the ten-slide deck aloud, using timing.md checkpoints. Do not read every Git host or deployment option. Explain Conftest as policy and Infracost as cost context in one sentence each. Say the survey year. Say the 1.0 proposal is a draft, not a release announcement.
+Rehearse once aloud against timing.md, then from speaker-cues.md. Explain the entire loop only on slide 2. On slide 3, discuss operational judgment and failure recovery without repeating the commands aloud. Do not enumerate Git hosts. Policy and cost get one sentence each. Say the survey year and distinguish draft 1.0 planning from a release. Point to the pavilion table before the final statement; hold the closing slide.
 
-The PR example gets 50 seconds; the survey gets 30; roadmap gets only 20. If late, use the exact emergency cuts rather than speaking faster. Keep the final slide visible after the last sentence. Record one run and listen for unexplained terms.
+## Critique and resulting repairs
 
-Final critique: newcomers get definition, problem and workflow before ecosystem details. Platform engineers see concrete tools and deployment options. Maintainers get configured-approval, historical-survey and draft-roadmap boundaries. The AV review checks ten native/static pages, template preservation and room-scale text. The organizer still needs to accept the revised slide count.
+- New attendee: the old workflow was fragmented across three slides. The revised hero shows the whole loop before the PR example.
+- Platform engineer: core integration compatibility was competing with optional policy/cost tools. Those now have distinct editable diagrams and purposes.
+- Maintainer: provider support is separate from hosting; optional checks are configured; survey evidence is dated; 1.0 remains provisional.
+- AV technician: preserve the official master and large text. First render exposed the new closing line touching the branding; moved it above the footer and re-rendered. Removed ambiguous numbered return-arrow labels from the workflow.
+- Speaker: 433 words leave space for ten transitions and deliberate pauses. Keep 1.0 to 15 seconds. The ten-slide count still requires reconciliation with organizer guidance, as documented in the README.
+
+The final practice should confirm the actual laptop, presenter notes and HDMI output. Native PowerPoint automation remains untested because macOS denied permission.

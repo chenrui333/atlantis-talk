@@ -1,0 +1,97 @@
+[
+  {
+    "title": "Atlantis",
+    "seconds": 15,
+    "narration": "Hi, I'm Rui, an Atlantis maintainer. Atlantis is an open-source service that runs Terraform and OpenTofu plans and applies from pull requests.",
+    "transition": "",
+    "cue": "Start with the definition.",
+    "purpose": "Start with the definition.",
+    "emergency_skip": []
+  },
+  {
+    "title": "Code review needs the execution result.",
+    "seconds": 20,
+    "narration": "Many teams already automate infrastructure. But if your workflow ends with someone running a command from a laptop, the reviewer may see the code without seeing the plan or the result. Atlantis brings those parts into the same conversation.",
+    "transition": "",
+    "cue": "Point to the missing plan and result.",
+    "purpose": "Point to the missing plan and result.",
+    "emergency_skip": []
+  },
+  {
+    "title": "Open a PR. See the plan.",
+    "seconds": 35,
+    "narration": "A developer opens a pull request. The Git host sends a webhook to Atlantis, a service your team hosts. Atlantis detects affected projects and runs a plan using Terraform or OpenTofu. The plan describes the proposed infrastructure changes. Atlantis posts the result back to the pull request, so reviewers can read the code and the plan together.",
+    "transition": "",
+    "cue": "Trace the webhook and return arrow.",
+    "purpose": "Trace the webhook and return arrow.",
+    "emergency_skip": []
+  },
+  {
+    "title": "Review it. Request the apply.",
+    "seconds": 30,
+    "narration": "After review, an authorized engineer comments atlantis apply. Atlantis checks the requirements your platform team configured, then runs the apply and reports the result. Terraform or OpenTofu still talks to provider APIs and uses your state backend. Atlantis coordinates the workflow around those tools.",
+    "transition": "",
+    "cue": "Review stays in Git; execution runs on Atlantis.",
+    "purpose": "Review stays in Git; execution runs on Atlantis.",
+    "emergency_skip": []
+  },
+  {
+    "title": "One change. One PR conversation.",
+    "seconds": 50,
+    "narration": "Here is a simplified example: increase a database's capacity. Atlantis posts a plan: zero resources to add, one to change, zero to destroy. That one change still deserves attention. For a database, that could include downtime, connection limits, and the cost change. The reviewer reads the full plan and checks the operational impact, then approves the pull request. I comment atlantis apply, and the bot reports completion. In this workflow, we apply before merging. If the apply fails, we can fix the change in the same pull request and try again. That is the experience to remember: review infrastructure where you already review code.",
+    "transition": "",
+    "cue": "Walk the PR rows. A small plan still needs review.",
+    "purpose": "Walk the PR rows. A small plan still needs review.",
+    "emergency_skip": [
+      "If the apply fails, we can fix the change in the same pull request and try again."
+    ]
+  },
+  {
+    "title": "Connect your platform tools.",
+    "seconds": 25,
+    "narration": "Atlantis connects your Git host to Terraform or OpenTofu. Terragrunt can run through custom workflows. Optional Conftest checks evaluate policy against the plan. Infracost can add cost estimates through a workflow integration. These give reviewers more context before execution.",
+    "transition": "",
+    "cue": "Git \u2192 execution \u2192 optional policy and cost context.",
+    "purpose": "Introduce capability groups and concrete ecosystem integrations.",
+    "emergency_skip": []
+  },
+  {
+    "title": "Run Atlantis in your infrastructure.",
+    "seconds": 20,
+    "narration": "For deployment, choose Kubernetes with Helm, containers, or a server. The docs include AWS Fargate, Google Cloud, and Azure options. This is where Atlantis runs; Terraform and OpenTofu providers determine what infrastructure it manages.",
+    "transition": "",
+    "cue": "Hosting choices differ from managed infrastructure.",
+    "purpose": "Explain deployment models and cloud examples without an installation tutorial.",
+    "emergency_skip": []
+  },
+  {
+    "title": "What the Atlantis community uses",
+    "seconds": 30,
+    "narration": "The project's twenty twenty-four survey received three hundred fifty-four responses. GitHub led, with a sizeable GitLab group, followed by Bitbucket and others. Terraform dominated; about half also used Terragrunt, and OpenTofu was gaining ground. Kubernetes and AWS were common deployment environments. These are community responses, not market share. The full results are in the project's blog.",
+    "transition": "",
+    "cue": "One historical survey; point to the three findings.",
+    "purpose": "Separate 2024 survey evidence from current capabilities.",
+    "emergency_skip": []
+  },
+  {
+    "title": "Toward Atlantis 1.0.0",
+    "seconds": 20,
+    "narration": "The team is also planning for one point zero. The draft proposal emphasizes stability, backwards compatibility, and clearer versioning for breaking changes. This is a planning discussion, not a released version or a promised date. The pull-request workflow remains the starting point.",
+    "transition": "",
+    "cue": "Draft direction, not a release announcement.",
+    "purpose": "Explain the proposed 1.0 direction without promising scope or timing.",
+    "emergency_skip": []
+  },
+  {
+    "title": "Infrastructure is code.",
+    "seconds": 30,
+    "narration": "Atlantis is a CNCF Sandbox project. Visit runatlantis dot io for the getting-started guide, or find the code and contribution guide on GitHub. Start with one repository and one infrastructure change. Bring your team's review rules into that workflow. Infrastructure is code. Plan it. Review it. Apply it. From the pull request.",
+    "transition": "",
+    "cue": "Point to the URL, then land the final four phrases.",
+    "purpose": "Point to the URL, then land the final four phrases.",
+    "emergency_skip": [
+      "Start with one repository and one infrastructure change.",
+      "Bring your team's review rules into that workflow."
+    ]
+  }
+]
