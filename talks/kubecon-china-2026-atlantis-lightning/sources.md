@@ -93,3 +93,7 @@ The prior binary artifacts are retained byte-for-byte as slides-expanded.pptx an
 - Requirements, distributions, locking, policy checks, Infracost integration, deployment, CNCF status, license API and China pavilion schedule were rechecked. Existing boundaries remain unchanged. Visible Git examples are representative; the full supported host list is in the embedded reference notes. Atlantis remains Sandbox, Apache-2.0. Pavilion remains Tuesday 10:30–14:30, T-10; narration now says Tuesday rather than Tuesday morning.
 
 References C01/C05/C06, C18, P01–P07, S01–S05, R01 and E03 are attached to non-spoken reference notes in narration.json. Those notes are mirrored in script.md and embedded in the generated PPTX.
+
+## Community discovery (verified September 7, 2026)
+
+- **E04 — Slide 10:** The official [community agenda and notes](https://docs.google.com/document/d/1EzseHmT4Zarj-_7MO8ud5mHByIJGIHS7JdoNNK9ZckU/edit) states that general meetings occur every two weeks on Wednesday at 4pm UTC. It links the LFX meetings page for joining/calendar access. The official [v0.37.0 release announcement](https://github.com/runatlantis/atlantis/releases/tag/v0.37.0) independently identifies this document and schedule. The closing slide links the document, without exposing the long URL. Meeting dates should be checked via its calendar; this is a recurring schedule, not a promise of a meeting during conference week.

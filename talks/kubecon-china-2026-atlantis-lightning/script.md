@@ -138,7 +138,7 @@ Transition (not spoken): Hold the closing slide.
 
 Emergency cut: None; retain this slide’s narration.
 
-Reference notes (not spoken): E03: Project Pavilion T-10, Tuesday September 8, 10:30–14:30, Grand Ballroom I. The slot extends into afternoon. This does not promise Rui is continuously present during the whole pavilion slot.
+Reference notes (not spoken): E03: Project Pavilion T-10, Tuesday September 8, 10:30–14:30, Grand Ballroom I. The slot extends into afternoon. This does not promise Rui is continuously present during the whole pavilion slot. Community meetings: every two weeks on Wednesday at 16:00 UTC. Official agenda/notes and calendar access: https://docs.google.com/document/d/1EzseHmT4Zarj-_7MO8ud5mHByIJGIHS7JdoNNK9ZckU/edit (verified against the public document and official v0.37.0 release announcement).
 
 ## Emergency 4-minute version
 

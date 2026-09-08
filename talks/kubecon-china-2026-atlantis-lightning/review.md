@@ -61,3 +61,9 @@ Preserved the preceding ten-slide artifacts before editing. Merged old workflow-
 ## Current information architecture pass
 
 Applied the representative-example rule. Removed the visible full Git host list and Terragrunt taxonomy; retained compatibility in non-spoken notes. Slide 6 now teaches extension categories and composition. Survey is a count plus two compact findings, with broader observations in narration. 1.0 is explained by the actual draft major-version rule. One question per slide now has a direct answer. No additions to the product catalog; closing information and archived reference deck preserved. Full narration is 426 words, still 4:30 with pauses.
+
+## Final visual refinement
+
+Kept all ten narrative beats and every spoken sentence. The hero now has one PR/results loop and a separate execution layer. The PR example uses a timeline. Platform outcomes form a connected operating model. Slides 5–7 use three different compositions: horizontal architecture, branching review context, and hosting choices. The survey keeps the exact 354 count and qualitative source wording. The 1.0 slide shows a version boundary, with its draft caveat intact. The closing combines the original message with one QR and verified community discovery links.
+
+Second visual critique, after viewing every page and the contact sheet: the sequence has fewer filled rectangles, stronger whitespace and consistent teal arrows. Each slide has a dominant visual idea. No new tool names or narration were added. The closing is the densest page, but its message and discovery areas are separated; it remains displayed after speaking so attendees can use the links. Main body type is 21–36pt, with 18–19pt discovery labels/caveats and smaller template metadata. Physical projection and native PowerPoint playback remain untested.

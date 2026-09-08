@@ -15,6 +15,11 @@ function box(s,x,y,w,h,fill=C.panel,line=fill){s.addShape(shape.rect,{x,y,w,h,fi
 function line(s,x,y,w,h=0,color=C.line,arrow=false){s.addShape(shape.line,{x,y,w,h,line:{color,width:2,beginArrowType:'none',endArrowType:arrow?'triangle':'none'}});}
 function pill(s,t,x,y,w,color=C.blue){box(s,x,y,w,.48,C.panel);text(s,t,x+.13,y,w-.26,.48,18,color,{bold:true});}
 function node(s,t,sub,x,y,w=3.1,h=1.22){box(s,x,y,w,h);text(s,t,x+.22,y+.15,w-.44,.43,27,C.text,{bold:true});if(sub)text(s,sub,x+.22,y+.68,w-.44,.36,19,C.muted);}
+function dot(s,x,y,r=.13,color=C.blue){s.addShape(shape.ellipse,{x:x-r,y:y-r,w:r*2,h:r*2,fill:{color},line:{color}});}
+function label(s,title,sub,x,y,w=3.2,align='left'){
+ text(s,title,x,y,w,.5,28,C.text,{bold:true,align});
+ if(sub)text(s,sub,x,y+.65,w,.8,22,C.muted,{align});
+}
 function logo(s,x,y,w){s.addImage({path:'assets/atlantis-icon.svg',altText:'Official Atlantis project logo',x,y,w,h:w});}
 function base(i,label,title){
  const s=deck.addSlide();
@@ -44,96 +49,107 @@ text(s,'Shanghai, China  ·  September 8, 2026',M,5.11,9,.33,18,'FFFFFF');
 addNotes(s,1);
 }
 
-// 2 — One native, complete loop; the PR owns review and results.
+// 2 — One loop: Atlantis coordinates; the IaC tool owns execution.
 {
 const s=base(2,'Plan → Review → Apply',notes[1].title);
-node(s,'Pull request','Developer opens a change',.8,2.7,4.1,1.35);
-node(s,'Atlantis','Workflow orchestration',8.3,2.7,4.1,1.35);
-text(s,'Code + plan review',1.02,4.35,4,.5,26,C.blue,{bold:true});
-text(s,'Configured requirements',8.3,4.35,4.1,.5,23,C.blue,{bold:true});
-line(s,5.1,2.85,2.95,0,C.blue,true);text(s,'Webhook',5.05,2.38,3.05,.35,21,C.blue,{align:'center'});
-line(s,8.05,3.8,-2.95,0,C.blue,true);text(s,'Plan + apply results',4.95,3.29,3.25,.4,21,C.blue,{align:'center'});
-line(s,5.1,4.85,2.95,0,C.blue,true);text(s,'atlantis apply',5.0,4.35,3.2,.35,21,C.blue,{align:'center'});
-line(s,10.35,4.9,0,.45,C.blue,true);
-node(s,'Infrastructure','',8.3,5.48,4.1,.95);text(s,'Via provider APIs',8.52,6.05,3.66,.25,18,C.muted);
-// Result is reported by Atlantis, not emitted directly by the infrastructure.
-
-text(s,'Terraform / OpenTofu:\nproviders + state',1.02,5.45,3.85,.95,23,C.text,{bold:true});
+node(s,'Pull request','Code + plan review',.8,2.65,3.65,1.35);
+node(s,'Atlantis','PR orchestration',8.3,2.65,4.15,1.35);
+line(s,4.65,3.05,3.45,0,C.blue,true);
+text(s,'Webhook · apply request',4.55,2.5,3.65,.45,21,C.blue,{align:'center'});
+line(s,8.1,3.9,-3.45,0,C.blue,true);
+text(s,'Plan + apply results',4.55,3.35,3.65,.45,21,C.blue,{align:'center'});
+text(s,'Configured requirements',8.3,4.18,4.15,.4,22,C.blue,{align:'center'});
+line(s,10.38,4.78,0,.38,C.blue,true);
+text(s,'Terraform / OpenTofu',8.2,5.25,4.35,.5,26,C.text,{bold:true,align:'center'});
+text(s,'Providers · state · infrastructure',8.08,5.9,4.6,.4,21,C.muted,{align:'center'});
+line(s,1.0,4.35,0,1.48,C.line);
+text(s,'Results stay with\nthe pull request.',1.3,4.78,6.2,1.05,31,C.blue,{bold:true});
 addNotes(s,2);
 }
-// 3 — Retain the readable PR example, with native conversation markers.
+// 3 — Native conversation timeline, not a screenshot.
 {
 const s=base(3,'Engineer experience',notes[2].title);
-box(s,.72,2.35,11.9,4.0);text(s,'infra: resize production database',1.02,2.6,10.9,.42,27,C.text,{bold:true});
-line(s,1.02,3.25,11.25);
-const rows=[['Atlantis','Plan: 0 to add, 1 to change, 0 to destroy',C.blue],['Reviewer','Approved',C.text],['Rui','atlantis apply',C.blue],['Atlantis','Apply complete.',C.text]];
-rows.forEach((r,i)=>{let y=3.52+i*.65;text(s,r[0],1.04,y,1.65,.4,21,C.muted);text(s,r[1],3.0,y,9.2,.4,25,r[2],{bold:i===0||i===2});});
-text(s,'Illustrative PR · approval requirement configured · apply before merge',1.02,6.02,11.3,.30,18,C.muted);addNotes(s,3);
+text(s,'infra: resize production database',.88,2.35,11.8,.5,28,C.text,{bold:true});
+line(s,1.08,3.2,0,2.33,C.line);
+const rows=[['Atlantis','Plan: 0 to add, 1 to change, 0 to destroy'],['Reviewer','Approved'],['Rui','atlantis apply'],['Atlantis','Apply complete.']];
+rows.forEach((r,i)=>{const y=3.02+i*.77;dot(s,1.08,y+.22,.11);text(s,r[0],1.48,y,1.8,.45,22,C.muted);if(i===0||i===2)box(s,3.35,y-.08,8.95,.58);text(s,r[1],3.55,y,8.6,.45,25,C.text,{bold:i===0||i===2});});
+text(s,'Illustrative PR · approval requirement configured · apply before merge',.88,6.18,11.7,.35,18,C.muted);addNotes(s,3);
 }
-// 4 — Outcomes, without another workflow explanation.
+// 4 — Connected operating model: proposal, governed execution, visibility.
 {
 const s=base(4,'Platform teams',notes[3].title);
-const rows=[['Visible','Plan + result beside the code'],['Controlled','Centralized execution + requirements'],['Collaborative','Developers propose; platform rules govern']];
-rows.forEach((r,i)=>{const y=2.65+i*1.18;s.addShape(shape.ellipse,{x:.85,y:y+.07,w:.4,h:.4,fill:{color:C.blue},line:{color:C.blue}});text(s,r[0],1.55,y,3.1,.58,31,C.blue,{bold:true});text(s,r[1],5.0,y,7.1,.65,26,C.text);});
+const rows=[['Collaborative','Developers propose'],['Controlled','Platform rules govern execution'],['Visible','Plan + result beside the code']];
+rows.forEach((r,i)=>{const y=2.65+i*1.16;dot(s,1.08,y+.3,.12);if(i<2)line(s,1.08,y+.5,0,.71,C.blue,true);text(s,r[0],1.55,y,3.55,.55,29,C.blue,{bold:true});text(s,r[1],5.35,y,7.0,.6,28,C.text);});
 addNotes(s,4);
 }
-// 5 — Core ecosystem flow, with extensions on the next slide.
+// 5 — Category, mechanism, execution: representative examples only.
 {
 const s=base(5,'Core integrations',notes[4].title);
-node(s,'Git provider','',.8,2.85,4.05,2.1);
-text(s,'Examples:\nGitHub · GitLab',1.02,3.6,3.61,.9,24,C.muted);
-node(s,'Atlantis','Orchestration',5.55,3.25,2.6,1.35);
-node(s,'IaC execution','',8.85,2.85,3.65,2.1);
-text(s,'Terraform / OpenTofu',9.07,3.6,3.21,.9,25,C.text,{bold:true});
-
-line(s,5.0,3.95,.4,0,C.blue,true);line(s,8.3,3.95,.4,0,C.blue,true);
-text(s,'Purpose-built infrastructure PR automation',.8,5.8,11.8,.65,30,C.blue,{bold:true});addNotes(s,5);
+label(s,'Git providers','GitHub · GitLab',.8,3.18,3.2,'center');
+node(s,'Atlantis','PR orchestration',5.05,3.08,3.25,1.4);
+label(s,'IaC execution','Terraform / OpenTofu',9.3,3.18,3.25,'center');
+line(s,4.05,3.8,.78,0,C.blue,true);line(s,8.52,3.8,.56,0,C.blue,true);
+text(s,'Purpose-built infrastructure PR automation',.8,5.75,11.8,.65,30,C.blue,{bold:true,align:'center'});addNotes(s,5);
 }
-// 6 — Categories and representative examples, composed into review.
+// 6 — Platform tooling enriches the review, with two examples.
 {
 const s=base(6,'Workflow extensions',notes[5].title);
-node(s,'Plan','Review input',.8,3.45,2.65,1.35);
-node(s,'Policy','e.g. Conftest',5.0,2.55,3.15,1.25);
-node(s,'Cost','e.g. Infracost',5.0,4.45,3.15,1.25);
-node(s,'Review','Added context',9.7,3.45,2.8,1.35);
-line(s,3.6,4.1,.6,0,C.blue);line(s,4.2,3.2,0,1.9,C.blue);line(s,4.2,3.2,.6,0,C.blue,true);line(s,4.2,5.1,.6,0,C.blue,true);
-line(s,8.3,3.2,.6,0,C.blue);line(s,8.3,5.1,.6,0,C.blue);line(s,8.9,3.2,0,1.9,C.blue);line(s,8.9,4.1,.6,0,C.blue,true);
-text(s,'Custom workflows compose your own tooling.',.8,6.1,11.8,.45,27,C.blue,{bold:true});addNotes(s,6);
+label(s,'Plan','Review input',.8,3.35,2.65,'center');
+label(s,'Policy','e.g. Conftest',4.95,2.45,3.15,'center');
+label(s,'Cost','e.g. Infracost',4.95,4.35,3.15,'center');
+label(s,'Review','Added context',9.65,3.35,2.85,'center');
+line(s,3.55,3.92,.65,0,C.blue);line(s,4.2,2.85,0,1.9,C.blue);line(s,4.2,2.85,.48,0,C.blue,true);line(s,4.2,4.75,.48,0,C.blue,true);
+line(s,8.3,2.85,.6,0,C.blue);line(s,8.3,4.75,.6,0,C.blue);line(s,8.9,2.85,0,1.9,C.blue);line(s,8.9,3.92,.5,0,C.blue,true);
+text(s,'Custom workflows compose your own tooling.',.8,6.1,11.8,.45,27,C.blue,{bold:true,align:'center'});addNotes(s,6);
 }
-// 7 — Deployment choices are separate from Terraform/OpenTofu providers.
+// 7 — The hosting choice branches from one self-hosted service.
 {
-const s=base(7,'Deployment models',notes[6].title);
-const cards=[['Kubernetes','Official Helm chart'],['Containers','Official Docker image'],['Server / VM','Run the Atlantis binary']];
-cards.forEach((r,i)=>{const x=.7+i*4.06;box(s,x,2.8,3.82,1.85);text(s,r[0],x+.22,3.10,3.38,.5,29,C.text,{bold:true});text(s,r[1],x+.22,3.85,3.38,.4,22,C.muted);});
-text(s,'Self-hosted. Kubernetes is optional.',.7,5.55,11.8,.7,31,C.blue,{bold:true});addNotes(s,7);
+const s=base(7,'Deployment models');
+text(s,'Atlantis is self-hosted.\nKubernetes is optional.',M,1.02,12.1,1.4,36,C.text,{bold:true});
+text(s,'Atlantis service',4.58,2.75,4.15,.5,28,C.blue,{bold:true,align:'center'});
+line(s,6.66,3.45,0,.5,C.blue);line(s,2.64,3.95,8.04,0,C.blue);
+const choices=[['Kubernetes','Official Helm chart'],['Container','Official image'],['Server / VM','Atlantis binary']];
+choices.forEach((r,i)=>{const x=.74+i*4.02;line(s,x+1.9,3.95,0,.48,C.blue,true);label(s,r[0],r[1],x,4.75,3.8,'center');});
+addNotes(s,7);
 }
-// 8 — Survey evidence stands alone, with the official blog as its source.
+// 8 — Historical evidence, without unsupported chart percentages.
 {
 const s=base(8,'Atlantis User Survey · 2024 · n=354',notes[7].title);
-text(s,'354',.8,2.8,3.6,1.3,86,C.blue,{bold:true});
-text(s,'survey responses',.8,4.3,3.7,.5,27,C.muted);
+text(s,'354',.8,2.9,3.6,1.4,90,C.blue,{bold:true});
+text(s,'survey responses',.8,4.45,3.7,.5,27,C.muted);
+line(s,4.62,2.75,0,3.0,C.line);
 const findings=[['GIT','GitHub leads · GitLab sizeable'],['IaC','Terraform dominant\nAbout half also use Terragrunt']];
-findings.forEach((r,i)=>{const y=2.85+i*1.5;text(s,r[0],4.9,y,7.4,.35,22,C.blue,{bold:true});text(s,r[1],4.9,y+.48,7.45,.9,27,C.text);});
+findings.forEach((r,i)=>{const y=2.8+i*1.52;text(s,r[0],5.08,y,7.4,.35,22,C.blue,{bold:true});text(s,r[1],5.08,y+.48,7.15,.95,27,C.text);});
 text(s,'Official results: runatlantis.io/blog',.8,6.2,11.6,.4,21,C.muted,{hyperlink:{url:'https://www.runatlantis.io/blog/2024/april-2024-survey-results'}});addNotes(s,8);
 }
-// 9 — Explicitly distinguish the draft 1.0 proposal from a release.
+// 9 — A visual version boundary, not a roadmap catalog.
 {
 const s=base(9,'Project direction',notes[8].title);
-text(s,'Planning discussion · not released',.8,2.3,11.7,.5,27,C.blue,{bold:true});
-text(s,'A clearer compatibility contract',.8,3.25,11.7,.85,38,C.text,{bold:true});
-text(s,'Breaking changes → major version',.8,4.65,11.7,.65,30,C.blue,{bold:true});
-text(s,'Draft proposal #5296 · release tracking #2496',.8,6.1,11.7,.45,21,C.muted,{hyperlink:{url:'https://github.com/runatlantis/atlantis/pull/5296'}});addNotes(s,9);
+text(s,'A clearer compatibility contract',.8,2.55,11.7,.75,36,C.text,{bold:true});
+text(s,'Breaking changes',.8,3.95,5.0,.65,31,C.blue,{bold:true});
+line(s,5.65,4.3,1.35,0,C.blue,true);
+text(s,'Major version',7.4,3.95,5.05,.65,31,C.blue,{bold:true});
+text(s,'Planning discussion · not released',.8,5.4,11.7,.5,26,C.text,{bold:true});
+text(s,'Draft proposal #5296 · release tracking #2496',.8,6.15,11.7,.4,21,C.muted,{hyperlink:{url:'https://github.com/runatlantis/atlantis/pull/5296'}});addNotes(s,9);
 }
-// 5 — QR is generated locally with a four-module quiet zone.
+// 10 — One QR, with concise linked discovery information.
 {
 const s=base(10,'Open source · CNCF Sandbox · Apache 2.0');
 text(s,'Infrastructure is code.',M,1.05,12,1.0,44,C.text,{bold:true});
-text(s,'Plan it.\nReview it.\nApply it.',M,2.38,8.1,2.75,51,C.blue,{bold:true,breakLine:false});
-text(s,'From the pull request.',M,5.25,8.3,.5,33,C.text,{bold:true});
+text(s,'Plan it.\nReview it.\nApply it.',M,2.42,5.7,2.75,49,C.blue,{bold:true});
+text(s,'From the pull request.',M,5.56,5.8,.65,30,C.text,{bold:true});
+line(s,6.15,2.45,0,3.88,C.line);
+const community='https://docs.google.com/document/d/1EzseHmT4Zarj-_7MO8ud5mHByIJGIHS7JdoNNK9ZckU/edit';
+text(s,'GET STARTED',6.5,2.45,3.2,.3,18,C.blue,{bold:true});
+text(s,'runatlantis.io/docs',6.5,2.88,3.6,.4,23,C.text,{hyperlink:{url:'https://www.runatlantis.io/docs'}});
+text(s,'SOURCE',6.5,3.52,3.2,.3,18,C.blue,{bold:true});
+text(s,'github.com/\nrunatlantis/atlantis',6.5,3.9,3.65,.8,22,C.text,{hyperlink:{url:'https://github.com/runatlantis/atlantis'}});
 await QRCode.toFile('assets/qr.png','https://www.runatlantis.io/',{width:900,margin:4,errorCorrectionLevel:'M',color:{dark:'#000000',light:'#FFFFFF'}});
-s.addImage({path:'assets/qr.png',altText:'QR code for https://www.runatlantis.io/',x:9.12,y:2.44,w:3.3,h:3.3,hyperlink:{url:'https://www.runatlantis.io/'}});
-text(s,'runatlantis.io',8.88,5.94,3.78,.43,27,C.blue,{align:'center',bold:true,hyperlink:{url:'https://www.runatlantis.io/'}});
-text(s,'GitHub: runatlantis/atlantis',M,5.89,8.5,.33,22,C.muted,{hyperlink:{url:'https://github.com/runatlantis/atlantis'}});text(s,'Find Atlantis: Project Pavilion · T-10 · Tue 10:30–14:30',M,6.35,11.8,.3,18,C.muted,{hyperlink:{url:'https://www.lfopensource.cn/kubecon-cloudnativecon-openinfra-summit-pytorch-conference-china/features-add-ons/project-engagement/#project-table-directory'}});addNotes(s,10);
+s.addImage({path:'assets/qr.png',altText:'QR code for https://www.runatlantis.io/',x:10.23,y:2.38,w:2.38,h:2.38,hyperlink:{url:'https://www.runatlantis.io/'}});
+text(s,'COMMUNITY',6.5,4.93,6.0,.3,18,C.blue,{bold:true});
+text(s,'Biweekly · Wed 16:00 UTC',6.5,5.3,6.0,.35,22,C.text);
+text(s,'Agenda / notes + add to calendar',6.5,5.73,6.1,.35,21,C.blue,{hyperlink:{url:community}});
+text(s,'Project Pavilion · T-10 · Tue 10:30–14:30',M,6.36,11.8,.3,19,C.muted,{hyperlink:{url:'https://www.lfopensource.cn/kubecon-cloudnativecon-openinfra-summit-pytorch-conference-china/features-add-ons/project-engagement/#project-table-directory'}});addNotes(s,10);
 }
 await deck.writeFile({fileName:'slides.pptx'});
 execFileSync('uv',['run','--with','defusedxml==0.7.1','python','apply-template.py'],{stdio:'inherit'});

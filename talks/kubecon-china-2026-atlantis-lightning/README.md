@@ -9,6 +9,7 @@ The ten-slide deck uses the organizer's official 2026 PowerPoint template: its S
 - [PowerPoint](slides.pptx): editable text and diagrams; full presenter notes
 - [PDF safety copy](slides.pdf): embedded fonts, offline visuals and clickable project links
 - [Slide previews](slides-preview/): one PNG per slide
+- [Contact sheet](contact-sheet.png): all ten slides in presentation order
 - [Full script and emergency version](script.md)
 - [Timing](timing.md), [speaker cues](speaker-cues.md), [stage checklist](stage-checklist.md)
 - [Narrative outline](outline.md), [design lock](summary.md), [sources](sources.md), [validation](validation.md)
@@ -46,7 +47,7 @@ docker start atlantis-slide-renderer-v2
 ATLANTIS_RENDER_CONTAINER=atlantis-slide-renderer-v2 npm run render
 ```
 
-That container mounts the repository at `/talk`. It is optional; it is not needed to present the delivered PPTX or PDF. PNG previews are 1921 × 1080. The PDF embeds Liberation Sans, the renderer's metrically compatible Arial substitute; editable PPTX text specifies Arial. No font download is needed during presentation.
+That container mounts the repository at `/talk`. It is optional; it is not needed to present the delivered PPTX or PDF. PNG previews are 1921 × 1080. With ImageMagick installed, run `bash contact-sheet.sh` to regenerate the sequence overview. The PDF embeds Liberation Sans, the renderer's metrically compatible Arial substitute; editable PPTX text specifies Arial. No font download is needed during presentation.
 
 On macOS, test the generated QR and its final slide with:
 
