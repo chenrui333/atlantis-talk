@@ -1,175 +1,169 @@
-# Full script
+# 中文演讲稿 / Chinese speaker notes
 
-English · Rui Chen · September 8, 2026 · Target 4:30; hard limit 5:00.
+English slides · 中文讲述 · Rui Chen · 2026-09-08
+目标 4:55；硬上限 5:00。只朗读正文，提示与技术参考不朗读。
 
-Speak the narration and transition only. Cues and timing metadata are not spoken.
+## 1 — Atlantis
 
-## Slide 1 — Atlantis
+目标：0:00–0:20（20 秒）
+提示：先定义 Atlantis。
 
-Target: 0:00–0:20 · 20 seconds · 34 spoken words.
+大家好，我是 Rui，Atlantis 的维护者。Atlantis 是一个开源服务，让团队在拉取请求里完成 Terraform 和 OpenTofu 的计划与执行。核心想法很简单：基础设施变更，也应该进入代码评审流程。
 
-Cue: Define Atlantis before introducing the workflow.
+转场：说完正文后换页。
 
-Hi, I'm Rui, an Atlantis maintainer. Atlantis is an open-source service that runs Terraform and OpenTofu plans and applies from pull requests. The idea is simple: code review should include the infrastructure execution result.
+超时可删：无；保留这页核心内容。
 
-Transition (not spoken): Advance after the final sentence.
+技术参考（不朗读）：C01/C02: Atlantis definition and maintainer identity.
 
-Emergency cut: None; retain this slide’s narration.
+## 2 — The pull request becomes the workflow.
 
-## Slide 2 — The pull request becomes the workflow.
+目标：0:20–1:10（50 秒）
+提示：沿图只走一遍；区分编排与执行。
 
-Target: 0:20–1:10 · 50 seconds · 76 spoken words.
+很多团队已经有基础设施自动化。Atlantis 解决的是：把计划、评审、执行和结果放在同一个流程里。开发者提交拉取请求，Git 平台发出 webhook，Atlantis 调用 Terraform 或 OpenTofu 生成计划，再贴回请求。大家一起看代码和计划，有权限的人发出 atlantis apply。Atlantis 检查配置好的条件，执行变更，再回传结果。它负责组织流程，底层工具负责云 API 和状态管理。
 
-Cue: Trace the loop once; distinguish orchestration from provider/state execution.
+转场：说完正文后换页。
 
-Many teams already automate infrastructure. Atlantis brings planning, review, execution, and results into one workflow. A developer opens a pull request. The Git host sends a webhook; Atlantis runs Terraform or OpenTofu and posts the plan back. The team reviews the code and plan together. An authorized engineer requests atlantis apply. Atlantis checks configured requirements, executes the change, and reports the result in the pull request. The infrastructure tooling still uses your providers and state backend.
+超时可删：无；保留这页核心内容。
 
-Transition (not spoken): Advance after the final sentence.
+技术参考（不朗读）：C01/C05/C06: Atlantis orchestrates VCS interaction, affected-project workflows, command requirements and reporting. Terraform/OpenTofu handles provider APIs and remote state/backend operations. The diagram combines plan and apply result arrows; they are separate events.
 
-Emergency cut: None; retain this slide’s narration.
+## 3 — One change. One PR conversation.
 
-Reference notes (not spoken): C01/C05/C06: Atlantis orchestrates VCS interaction, affected-project workflows, command requirements and reporting. Terraform/OpenTofu handles provider APIs and remote state/backend operations. The diagram combines plan and apply result arrows; they are separate events.
+目标：1:10–1:45（35 秒）
+提示：变更小不等于安全。
 
-## Slide 3 — One change. One PR conversation.
+看一个数据库扩容的例子：不新增、不销毁，只修改一个资源。但变更小，不代表风险小。评审者要看完整计划，确认是否重建实例、是否影响服务。批准、执行请求和结果，都在这段对话中。执行失败，可以在原请求里修正。这个例子是在合并之前执行。
 
-Target: 1:10–1:50 · 40 seconds · 62 spoken words.
+转场：说完正文后换页。
 
-Cue: Explain the engineer experience; do not repeat the architecture.
+超时可删：执行失败，可以在原请求里修正。
 
-Here is one database capacity change. The summary says zero to add, one to change, zero to destroy. Small does not mean safe: the reviewer reads the full plan and considers operational impact. The plan becomes review context attached to the code change. If execution fails, the team can correct the change in the same pull request. This example applies before merging.
+技术参考（不朗读）：C06: Illustrative PR, configured approval, apply before merge; small changes still require full-plan review.
 
-Transition (not spoken): Advance after the final sentence.
+## 4 — Shared review. Controlled execution.
 
-Emergency cut: If execution fails, the team can correct the change in the same pull request.
+目标：1:45–2:10（25 秒）
+提示：开发者提议，平台规则控制。
 
-## Slide 4 — Shared review. Controlled execution.
+对平台团队来说，这是一个协作模式：开发者提议变更，平台规则控制执行，计划和结果公开可见。凭据与执行集中管理，锁定机制帮助协调并发变更。但集中执行仍然需要可信仓库和合理权限。
 
-Target: 1:50–2:15 · 25 seconds · 38 spoken words.
+转场：说完正文后换页。
 
-Cue: Three outcomes; centralized execution is not a security guarantee.
+超时可删：无；保留这页核心内容。
 
-Platform teams get visibility, control, and collaboration. Plans and results sit beside code. Credentials and execution are centralized; configured requirements and locking coordinate changes. Developers propose; platform rules govern execution. Centralization still needs careful permissions and trusted repositories.
+技术参考（不朗读）：C18: Provider credentials are supplied to the Atlantis execution environment; this does not assert that all developer credentials disappear. Repo/server configuration controls requirements. Atlantis locks a directory/workspace across PRs; this is separate from Terraform state locking. Plan execution also needs trusted repositories and restricted permissions.
 
-Transition (not spoken): Advance after the final sentence.
+## 5 — Connect Git to your infrastructure tools.
 
-Emergency cut: None; retain this slide’s narration.
+目标：2:10–2:45（35 秒）
+提示：Git 接入与云 Provider 是两层。
 
-Reference notes (not spoken): C18: Provider credentials are supplied to the Atlantis execution environment; this does not assert that all developer credentials disappear. Repo/server configuration controls requirements. Atlantis locks a directory/workspace across PRs; this is separate from Terraform state locking. Plan execution also needs trusted repositories and restricted permissions.
+这里要分清两种集成。上游接 Git 平台，比如自建 GitLab，也支持 Gitea 和 Forgejo。下游由 Terraform 或 OpenTofu 的 Provider 连接阿里云、腾讯云等基础设施。这不是 Atlantis 自带的云接口；具体版本、资源范围和凭据，要按 Provider 文档配置。
 
-## Slide 5 — Connect Git to your infrastructure tools.
+转场：说完正文后换页。
 
-Target: 2:15–2:40 · 25 seconds · 36 spoken words.
+超时可删：这不是 Atlantis 自带的云接口；具体版本、资源范围和凭据，要按 Provider 文档配置。
 
-Cue: Point to the flow; do not read the host list.
+技术参考（不朗读）：P01–P03/C04/C18: Current hosts: GitHub, GitLab, Bitbucket Cloud and Server, Azure DevOps, Gitea and compatible forks such as Forgejo. Examples on screen are not exhaustive. Terraform and OpenTofu are selectable distributions. Terragrunt requires its binary and custom workflow commands; it is not a peer provider. Project discovery/planning, apply coordination, locking and VCS comments are purpose-built behaviors, not capabilities exclusive to Atlantis. CN01–CN03: Alibaba Cloud and Tencent Cloud are provider targets, not Atlantis plugins. Gitee is not listed in official Git-host requirements; Git protocol support does not imply webhook/API compatibility. This does not rule out third-party adapters or forks.
 
-Atlantis connects your Git provider to IaC execution. You can build pieces in generic CI; Atlantis packages projects, plans, applies, locking, and VCS interaction into one service. Custom workflows extend execution, including tools such as Terragrunt.
+## 6 — Extend the pull-request review.
 
-Transition (not spoken): Advance after the final sentence.
+目标：2:45–3:10（25 秒）
+提示：策略、成本是配置后的扩展。
 
-Emergency cut: Custom workflows extend execution, including tools such as Terragrunt.
+平台规则也可以扩展。比如通过 Conftest 检查策略，用 Infracost 提供成本信息，或通过自定义工作流接入 Terragrunt。这些是可以组合的工具，需要配置，不是安装之后就自动开启的检查。
 
-Reference notes (not spoken): P01–P03/C04/C18: Current hosts: GitHub, GitLab, Bitbucket Cloud and Server, Azure DevOps, Gitea and compatible forks such as Forgejo. Examples on screen are not exhaustive. Terraform and OpenTofu are selectable distributions. Terragrunt requires its binary and custom workflow commands; it is not a peer provider. Project discovery/planning, apply coordination, locking and VCS comments are purpose-built behaviors, not capabilities exclusive to Atlantis.
+转场：说完正文后换页。
 
-## Slide 6 — Extend the pull-request review.
+超时可删：这些是可以组合的工具，需要配置，不是安装之后就自动开启的检查。
 
-Target: 2:40–3:00 · 20 seconds · 32 spoken words.
+技术参考（不朗读）：P04/P05/P07: Examples, not an exhaustive ecosystem: Conftest policy evaluation and Infracost cost estimation. Custom workflow run steps invoke external tools. Server-side pre/post workflow hooks support surrounding scripts; unlike workflow output, hooks do not automatically post their output as PR comments. Pre-hook errors do not block workflows by default; fail-on-pre-workflow-hook-error changes that behavior. Infracost integration requires configured tooling/hooks or workflow steps; it is not enabled by installing Atlantis. Custom validation or notification scripts are possible mechanisms, not bundled products.
 
-Cue: Policy and cost are separate, optional review inputs.
+## 7 — Run Atlantis in your infrastructure.
 
-Platform teams compose tooling through custom workflows. Policy and cost are examples: Conftest checks the plan; Infracost adds cost context. These are configured extensions, not checks that every Atlantis installation automatically runs.
+目标：3:10–3:35（25 秒）
+提示：运行位置不决定管理目标。
 
-Transition (not spoken): Advance after the final sentence.
+Atlantis 本身是自托管服务，可以用官方 Helm chart、容器镜像，或者二进制部署。Kubernetes 是一种运行选择，不是前提。它运行在哪里，和它能管理哪些基础设施，是两回事；后者由 Provider 决定。
 
-Emergency cut: None; retain this slide’s narration.
+转场：说完正文后换页。
 
-Reference notes (not spoken): P04/P05/P07: Examples, not an exhaustive ecosystem: Conftest policy evaluation and Infracost cost estimation. Custom workflow run steps invoke external tools. Server-side pre/post workflow hooks support surrounding scripts; unlike workflow output, hooks do not automatically post their output as PR comments. Pre-hook errors do not block workflows by default; fail-on-pre-workflow-hook-error changes that behavior. Infracost integration requires configured tooling/hooks or workflow steps; it is not enabled by installing Atlantis. Custom validation or notification scripts are possible mechanisms, not bundled products.
+超时可删：无；保留这页核心内容。
 
-## Slide 7 — Run Atlantis in your infrastructure.
+技术参考（不朗读）：P06: Official Helm chart, official container image and Go binary deployment. Hosting is distinct from Terraform/OpenTofu provider targets. No cloud-provider compatibility list is implied.
 
-Target: 3:00–3:20 · 20 seconds · 34 spoken words.
+## 8 — Multiple stacks. One PR workflow.
 
-Cue: Hosting choice does not determine provider support.
+目标：3:35–4:05（30 秒）
+提示：强调 2024 年和 354 份回复。
 
-Atlantis is self-hosted: use Helm, a container, or a server binary. Kubernetes is optional. Running Atlantis on Kubernetes does not limit it to managing Kubernetes; Terraform and OpenTofu providers determine the infrastructure being managed.
+生态也有社区反馈作为参考。二〇二四年调查收到三百五十四份回复。GitHub 最多，GitLab 也有相当一部分。Terraform 占主导，约一半还使用 Terragrunt，OpenTofu 也在获得采用。不同工具组合，共享同一套协作流程。这是历史调查，不是市场份额。
 
-Transition (not spoken): Advance after the final sentence.
+转场：说完正文后换页。
 
-Emergency cut: None; retain this slide’s narration.
+超时可删：不同工具组合，共享同一套协作流程。
 
-Reference notes (not spoken): P06: Official Helm chart, official container image and Go binary deployment. Hosting is distinct from Terraform/OpenTofu provider targets. No cloud-provider compatibility list is implied.
+技术参考（不朗读）：S01–S05: Official 2024 survey: 354 responses, not organizations or market share. GitHub most common; sizeable GitLab, then Bitbucket/others. Terraform dominant; about half additionally use Terragrunt; OpenTofu gaining ground. Kubernetes and/or AWS common. Published Markdown links WebP chart images, with no raw numeric table or downloadable dataset; no chart estimates used. Visible examples summarize breadth; complete qualitative findings remain here.
 
-## Slide 8 — Multiple stacks. One PR workflow.
+## 9 — Toward Atlantis 1.0.0
 
-Target: 3:20–3:50 · 30 seconds · 43 spoken words.
+目标：4:05–4:25（20 秒）
+提示：规划不等于已发布。
 
-Cue: Say the year; point to the official survey blog.
+接下来，项目正在讨论走向一点零的兼容性约定：稳定性、向后兼容，以及破坏性变更应该对应主版本升级。这还是规划讨论，不是发布公告，也没有在这里承诺发布日期。
 
-The project's twenty twenty-four survey received three hundred fifty-four responses. GitHub led, with sizeable GitLab usage. Terraform dominated; about half also used Terragrunt, and OpenTofu was gaining ground. Kubernetes and AWS were common deployment environments. These are historical community responses, not market share.
+转场：说完正文后换页。
 
-Transition (not spoken): Advance after the final sentence.
+超时可删：无；保留这页核心内容。
 
-Emergency cut: None; retain this slide’s narration.
+技术参考（不朗读）：R01: Draft PR #5296 says 1.0 is not expected to differ from a usual 0.x feature release; it signals stability/backwards compatibility. Proposed semantics: bug fixes patch, features minor, backwards-incompatible changes major. Server settings, repo config, API and core execution behavior are examples of compatibility boundaries. Draft and unmerged; no release date promised.
 
-Reference notes (not spoken): S01–S05: Official 2024 survey: 354 responses, not organizations or market share. GitHub most common; sizeable GitLab, then Bitbucket/others. Terraform dominant; about half additionally use Terragrunt; OpenTofu gaining ground. Kubernetes and/or AWS common. Published Markdown links WebP chart images, with no raw numeric table or downloadable dataset; no chart estimates used. Visible examples summarize breadth; complete qualitative findings remain here.
+## 10 — Infrastructure is code.
 
-## Slide 9 — Toward Atlantis 1.0.0
+目标：4:25–4:55（30 秒）
+提示：指向社区与展台；结束后保持页面。
 
-Target: 3:50–4:05 · 15 seconds · 29 spoken words.
+欢迎从文档开始，也欢迎贡献代码、文档，分享中国团队的使用经验。社区议程和日历链接都在这里。周二十点半到下午两点半，欢迎来 Grand Ballroom One 的 T 十展台交流。基础设施就是代码。先计划，再评审，再执行。都在拉取请求里完成。
 
-Cue: Keep project direction brief and explicitly provisional.
+转场：保持结尾页。
 
-The draft one point zero proposal clarifies the compatibility contract: breaking changes would require major versions. It signals stability and backwards compatibility. This is planning, not a release announcement.
+超时可删：社区议程和日历链接都在这里。
 
-Transition (not spoken): Advance after the final sentence.
+技术参考（不朗读）：E03: Project Pavilion T-10, Tuesday September 8, 10:30–14:30, Grand Ballroom I. The slot extends into afternoon. This does not promise Rui is continuously present during the whole pavilion slot. Community meetings: every two weeks on Wednesday at 16:00 UTC. Official agenda/notes and calendar access: https://docs.google.com/document/d/1EzseHmT4Zarj-_7MO8ud5mHByIJGIHS7JdoNNK9ZckU/edit (verified against the public document and official v0.37.0 release announcement). Rui reconfirmed Grand Ballroom I, T-10, Tuesday 10:30–14:30 for China 2026.
 
-Emergency cut: None; retain this slide’s narration.
+## 紧急四分钟版
 
-Reference notes (not spoken): R01: Draft PR #5296 says 1.0 is not expected to differ from a usual 0.x feature release; it signals stability/backwards compatibility. Proposed semantics: bug fixes patch, features minor, backwards-incompatible changes major. Server settings, repo config, API and core execution behavior are examples of compatibility boundaries. Draft and unmerged; no release date promised.
+同样十页，只删以下句子，不加快语速。
 
-## Slide 10 — Infrastructure is code.
+- 第 3 页：删去「执行失败，可以在原请求里修正。」
+- 第 5 页：删去「这不是 Atlantis 自带的云接口；具体版本、资源范围和凭据，要按 Provider 文档配置。」
+- 第 6 页：删去「这些是可以组合的工具，需要配置，不是安装之后就自动开启的检查。」
+- 第 8 页：删去「不同工具组合，共享同一套协作流程。」
+- 第 10 页：删去「社区议程和日历链接都在这里。」
 
-Target: 4:05–4:30 · 25 seconds · 42 spoken words.
+### 四分钟版全文
 
-Cue: Point to discovery links, then hold the final slide.
+**第 1 页** 大家好，我是 Rui，Atlantis 的维护者。Atlantis 是一个开源服务，让团队在拉取请求里完成 Terraform 和 OpenTofu 的计划与执行。核心想法很简单：基础设施变更，也应该进入代码评审流程。
 
-Learn more at runatlantis dot io, explore the code on GitHub, and join the CNCF community. Find Atlantis at Project Pavilion, table T-ten, in Grand Ballroom One on Tuesday. Infrastructure is code. Plan it. Review it. Apply it. From the pull request.
+**第 2 页** 很多团队已经有基础设施自动化。Atlantis 解决的是：把计划、评审、执行和结果放在同一个流程里。开发者提交拉取请求，Git 平台发出 webhook，Atlantis 调用 Terraform 或 OpenTofu 生成计划，再贴回请求。大家一起看代码和计划，有权限的人发出 atlantis apply。Atlantis 检查配置好的条件，执行变更，再回传结果。它负责组织流程，底层工具负责云 API 和状态管理。
 
-Transition (not spoken): Hold the closing slide.
+**第 3 页** 看一个数据库扩容的例子：不新增、不销毁，只修改一个资源。但变更小，不代表风险小。评审者要看完整计划，确认是否重建实例、是否影响服务。批准、执行请求和结果，都在这段对话中。这个例子是在合并之前执行。
 
-Emergency cut: None; retain this slide’s narration.
+**第 4 页** 对平台团队来说，这是一个协作模式：开发者提议变更，平台规则控制执行，计划和结果公开可见。凭据与执行集中管理，锁定机制帮助协调并发变更。但集中执行仍然需要可信仓库和合理权限。
 
-Reference notes (not spoken): E03: Project Pavilion T-10, Tuesday September 8, 10:30–14:30, Grand Ballroom I. The slot extends into afternoon. This does not promise Rui is continuously present during the whole pavilion slot. Community meetings: every two weeks on Wednesday at 16:00 UTC. Official agenda/notes and calendar access: https://docs.google.com/document/d/1EzseHmT4Zarj-_7MO8ud5mHByIJGIHS7JdoNNK9ZckU/edit (verified against the public document and official v0.37.0 release announcement).
+**第 5 页** 这里要分清两种集成。上游接 Git 平台，比如自建 GitLab，也支持 Gitea 和 Forgejo。下游由 Terraform 或 OpenTofu 的 Provider 连接阿里云、腾讯云等基础设施。
 
-## Emergency 4-minute version
+**第 6 页** 平台规则也可以扩展。比如通过 Conftest 检查策略，用 Infracost 提供成本信息，或通过自定义工作流接入 Terragrunt。
 
-Use the same ten slides. Skip exactly these sentences; do not speak faster. Keep the definition, full-plan review, configured approvals, dated survey evidence, and final line.
+**第 7 页** Atlantis 本身是自托管服务，可以用官方 Helm chart、容器镜像，或者二进制部署。Kubernetes 是一种运行选择，不是前提。它运行在哪里，和它能管理哪些基础设施，是两回事；后者由 Provider 决定。
 
-- Slide 3: Skip “If execution fails, the team can correct the change in the same pull request.”
-- Slide 5: Skip “Custom workflows extend execution, including tools such as Terragrunt.”
+**第 8 页** 生态也有社区反馈作为参考。二〇二四年调查收到三百五十四份回复。GitHub 最多，GitLab 也有相当一部分。Terraform 占主导，约一半还使用 Terragrunt，OpenTofu 也在获得采用。这是历史调查，不是市场份额。
 
-### Short script for rehearsal
+**第 9 页** 接下来，项目正在讨论走向一点零的兼容性约定：稳定性、向后兼容，以及破坏性变更应该对应主版本升级。这还是规划讨论，不是发布公告，也没有在这里承诺发布日期。
 
-**Slide 1.** Hi, I'm Rui, an Atlantis maintainer. Atlantis is an open-source service that runs Terraform and OpenTofu plans and applies from pull requests. The idea is simple: code review should include the infrastructure execution result.
+**第 10 页** 欢迎从文档开始，也欢迎贡献代码、文档，分享中国团队的使用经验。周二十点半到下午两点半，欢迎来 Grand Ballroom One 的 T 十展台交流。基础设施就是代码。先计划，再评审，再执行。都在拉取请求里完成。
 
-**Slide 2.** Many teams already automate infrastructure. Atlantis brings planning, review, execution, and results into one workflow. A developer opens a pull request. The Git host sends a webhook; Atlantis runs Terraform or OpenTofu and posts the plan back. The team reviews the code and plan together. An authorized engineer requests atlantis apply. Atlantis checks configured requirements, executes the change, and reports the result in the pull request. The infrastructure tooling still uses your providers and state backend.
-
-**Slide 3.** Here is one database capacity change. The summary says zero to add, one to change, zero to destroy. Small does not mean safe: the reviewer reads the full plan and considers operational impact. The plan becomes review context attached to the code change. This example applies before merging.
-
-**Slide 4.** Platform teams get visibility, control, and collaboration. Plans and results sit beside code. Credentials and execution are centralized; configured requirements and locking coordinate changes. Developers propose; platform rules govern execution. Centralization still needs careful permissions and trusted repositories.
-
-**Slide 5.** Atlantis connects your Git provider to IaC execution. You can build pieces in generic CI; Atlantis packages projects, plans, applies, locking, and VCS interaction into one service.
-
-**Slide 6.** Platform teams compose tooling through custom workflows. Policy and cost are examples: Conftest checks the plan; Infracost adds cost context. These are configured extensions, not checks that every Atlantis installation automatically runs.
-
-**Slide 7.** Atlantis is self-hosted: use Helm, a container, or a server binary. Kubernetes is optional. Running Atlantis on Kubernetes does not limit it to managing Kubernetes; Terraform and OpenTofu providers determine the infrastructure being managed.
-
-**Slide 8.** The project's twenty twenty-four survey received three hundred fifty-four responses. GitHub led, with sizeable GitLab usage. Terraform dominated; about half also used Terragrunt, and OpenTofu was gaining ground. Kubernetes and AWS were common deployment environments. These are historical community responses, not market share.
-
-**Slide 9.** The draft one point zero proposal clarifies the compatibility contract: breaking changes would require major versions. It signals stability and backwards compatibility. This is planning, not a release announcement.
-
-**Slide 10.** Learn more at runatlantis dot io, explore the code on GitHub, and join the CNCF community. Find Atlantis at Project Pavilion, table T-ten, in Grand Ballroom One on Tuesday. Infrastructure is code. Plan it. Review it. Apply it. From the pull request.
-
-Total words including transitions: **426**.
-Speaking alone at 130–145 wpm: **2:56–3:17**.
-Planned duration with pauses: **4:30**. Safety margin: **30 seconds**.
-Emergency: **403 words**, approximately **3:21** at 130 wpm with 15 seconds of pauses.
+全文：771 个汉字，41 个英文词项。约 884 个发音单位。
+计划：4:55，安全余量 5 秒。中文稿不使用英文空格分词或英文 wpm 估时。

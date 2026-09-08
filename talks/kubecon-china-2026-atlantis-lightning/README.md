@@ -1,87 +1,46 @@
-# Atlantis — KubeCon China 2026 Project Lightning Talk
+# Atlantis — KubeCon China 2026 Lightning Talk
 
-Five-minute project talk by Rui Chen, Atlantis Maintainer. **September 8, 2026, 11:35–11:40 China Standard Time**, Shanghai International Convention Center, 5F room 5B + C.
+Rui Chen · September 8, 2026 · Shanghai. Ten English slides with Chinese narration, using the official 16:9 event template. Target: 4:55 within a five-minute slot; actual rehearsal may run shorter.
 
-The ten-slide deck uses the organizer's official 2026 PowerPoint template: its Shanghai skyline cover and white content layouts. All slides have been rendered, visually inspected and polished. The deck is ready for rehearsal and presentation; organizer submission has not been performed.
+## Present
 
-## Present and rehearse
+- [slidesv2.pdf](slidesv2.pdf) — polished ten-slide PDF, embedded fonts
+- [slides.pptx](slides.pptx) — editable deck with embedded Chinese speaker notes
+- [script.md](script.md) — full Chinese narration, cues and emergency four-minute version
+- [timing.md](timing.md), [speaker-cues.md](speaker-cues.md)
+- [Previews](slides-preview/) and [contact sheet](contact-sheet.png)
+- [Sources](sources.md), [validation](validation.md), [rehearsal](rehearsal.md)
 
-- [PowerPoint](slides.pptx): editable text and diagrams; full presenter notes
-- [PDF safety copy](slides.pdf): embedded fonts, offline visuals and clickable project links
-- [Slide previews](slides-preview/): one PNG per slide
-- [Contact sheet](contact-sheet.png): all ten slides in presentation order
-- [Full script and emergency version](script.md)
-- [Timing](timing.md), [speaker cues](speaker-cues.md), [stage checklist](stage-checklist.md)
-- [Narrative outline](outline.md), [design lock](summary.md), [sources](sources.md), [validation](validation.md)
-- [Rehearsal practice and final critique](rehearsal.md)
+Project Pavilion: **T-10 · Tuesday 10:30–14:30 · Grand Ballroom I**. The closing slide includes project documentation, source, the official community agenda/calendar link and one homepage QR.
 
-**4:30 target · 5:00 hard limit · 30-second margin.** The full script has 426 spoken words including transitions. The exact emergency cuts produce 403 words, approximately 3:21 at 130 words/minute including pauses. No live demo, animation or planned Q&A. Timing is modeled; rehearse aloud with a stopwatch.
+## Build and render
 
-## Regenerate
-
-Requirements: Node.js, npm, Python 3 and uv. The namespace-preserving template importer uses defusedxml 0.7.1 in an isolated uv environment. Run from this directory:
+Run from this directory with Node.js, npm, Python 3, uv, LibreOffice and Poppler:
 
 ```sh
 npm ci --ignore-scripts
 python3 write-materials.py
 npm run build
-npm run validate
-```
-
-[slides.mjs](slides.mjs) generates native text, vector diagrams, embedded artwork and notes. [apply-template.py](apply-template.py) imports the official masters, layouts, theme and branding, scaling the template canvas uniformly to the deck's 16:9 canvas. The original template is retained at [assets/conference-template.pptx](assets/conference-template.pptx).
-
-[narration.json](narration.json) is the single source for narration, timing, cues and emergency cuts. Run write-materials.py after editing it. The build embeds these notes automatically.
-
-## Render PDF and previews
-
-With LibreOffice and Poppler (`pdftoppm`, `pdfinfo`) installed:
-
-```sh
 npm run render
-```
-
-PowerPoint for Mac export is also supported by render.applescript when Apple-event automation is permitted. In this preparation environment macOS denied that permission, so the deck was opened and exported with LibreOffice 7.3.7.2 in an isolated container. The prepared local renderer can be reused:
-
-```sh
-docker start atlantis-slide-renderer-v2
-ATLANTIS_RENDER_CONTAINER=atlantis-slide-renderer-v2 npm run render
-```
-
-That container mounts the repository at `/talk`. It is optional; it is not needed to present the delivered PPTX or PDF. PNG previews are 1921 × 1080. With ImageMagick installed, run `bash contact-sheet.sh` to regenerate the sequence overview. The PDF embeds Liberation Sans, the renderer's metrically compatible Arial substitute; editable PPTX text specifies Arial. No font download is needed during presentation.
-
-On macOS, test the generated QR and its final slide with:
-
-```sh
+npm run validate
+bash contact-sheet.sh
 swift check-qr.swift assets/qr.png slides-preview/10.png
 ```
 
-## Provenance and limitations
+The contact sheet uses ImageMagick; QR validation uses macOS Vision. The existing optional renderer is reused with `docker start atlantis-slide-renderer-v2` followed by `ATLANTIS_RENDER_CONTAINER=atlantis-slide-renderer-v2 npm run render`. It mounts the repository at `/talk`.
 
-Official Atlantis SVGs come from CNCF artwork. The conference template was supplied by the organizers and provided by Rui; its original branding is preserved. See [sources](sources.md#a01--artwork-provenance). Text and diagrams remain editable; original conference artwork is embedded in its supplied form.
+[slides.mjs](slides.mjs) is the editable source. [narration.json](narration.json) owns the Chinese notes and timing. The importer retains the original [conference template](assets/conference-template.pptx), its masters, layouts and artwork. Arial is used for visible English text; LibreOffice embeds its Liberation Sans substitute in the PDF. Chinese notes are Unicode text and require a normal CJK-capable presenter environment; they are not printed on the slide PDF.
 
-PptxGenJS 4.0.1 and qrcode 1.5.4 are pinned. npm audit reports image-size parser advisories inherited through PptxGenJS. This fixed-asset build uses retained official SVGs and locally generated PNG, not the affected ICNS/JXL/HEIF formats. Do not treat the generator as an arbitrary-image upload service.
+The current PDF is slidesv2.pdf. The original v2 bytes are preserved as slides-reference-10.pdf. The five-slide alternative remains slidesv3.pdf, with slidesv3.pptx, slidesv3.mjs, narration-v3.json and script-v3.md. No live demo, animation, web-loaded asset or extra QR is required.
 
-The unresolved conference details are acceptance of ten slides against the earlier 3–5-slide guidance, the schedule's Chinese language label (this deck and script are English), and the final organizer upload route. See stage-checklist.md. Present from the supplied files after the normal laptop/projector check.
+## Preserved reference versions
 
-## Skill-guided QA
+The preceding polished ten-slide deck is preserved as [slides-reference-10.pptx](slides-reference-10.pptx), [PDF](slides-reference-10.pdf), [source](slides-reference-10.mjs), [English script](script-reference-10.md) and narration-reference-10.json. To regenerate, run `node slides-reference-10.mjs`. The earlier slides-expanded files remain unchanged. These are preserved reference versions. Rui selected the ten-slide v2 for this iteration.
 
-The four requested skills were installed locally with skills.sh. Provenance and hashes are recorded in the root skills-lock.json; downloaded skill payloads stay untracked. giving-presentations uses its last original revision because current upstream reorganized that skill. They supplement the official template; none supplies a replacement theme.
+## Validation limits
 
-From the repository root, after restoring the workspace skills:
+All ten slide images were inspected. PPTX structure, template preservation, notes, PDF fonts, hyperlinks and QR decoding were checked. Native PowerPoint automation remains blocked by macOS; LibreOffice opening/export was tested. Actual speaking time and the venue projector require a normal rehearsal/AV check. Organizer upload route remains unconfirmed; no upload was performed.
 
-```sh
-npx skills experimental_install
-uv run --with defusedxml==0.7.1 --with lxml==6.0.2 python .agents/skills/pptx/scripts/office/validate.py talks/kubecon-china-2026-atlantis-lightning/slides.pptx --original talks/kubecon-china-2026-atlantis-lightning/assets/conference-template.pptx
-```
+The workflow continues to use the installed pptx, pptx-deck-context, pptx-visual-assets and giving-presentations skills. PptxGenJS 4.0.1, qrcode 1.5.4 and importer defusedxml 0.7.1 remain pinned; no new build dependency was introduced.
 
-The primary PPTX skill's validator checks against the original template. Then render every slide using the commands above and inspect the full-size PNGs. See validation.md for the final result and specific slide checks.
-
-The ten-slide introduction follows Rui’s revised direction. It exceeds the organizer’s earlier 3–5-slide guidance; this departure still needs organizer acceptance. The official template and five-minute time limit remain unchanged.
-
-## Preserved reference version
-
-The preceding ten-slide version is archived as [slides-expanded.pptx](slides-expanded.pptx), [slides-expanded.pdf](slides-expanded.pdf), [slides-expanded.mjs](slides-expanded.mjs), [script-expanded.md](script-expanded.md), and narration-expanded.json. The primary slides.pptx is the revised ten-slide narrative, following Rui’s final instruction to retain ten slides and distribute information. Neither is a five-slide organizer-compliant deck.
-
-Regenerate the reference PPTX from this directory with `node slides-expanded.mjs`; it reads narration-expanded.json and writes only slides-expanded.pptx. The preserved PDF is the original export. The main `npm run build` and `npm run render` commands operate on the revised deck.
-
-Onsite discovery is verified: **Project Pavilion, T-10, September 8, 10:30–14:30, Grand Ballroom I**. The closing slide includes the table and time.
+The supplied organizer guidance says three to five slides. This ten-slide version follows Rui’s later explicit choice; the five-slide v3 remains available if that limit is enforced. No organizer approval or submission is claimed.

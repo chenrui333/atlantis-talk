@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
 cd "$(dirname "$0")"
-# Arrange existing previews only: no font or presentation dependency is added.
 contact_tmp=$(mktemp -d)
 trap 'rm -rf "$contact_tmp"' EXIT
 for row in {0..4}; do

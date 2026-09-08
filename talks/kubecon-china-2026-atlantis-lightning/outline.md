@@ -1,63 +1,63 @@
-# Narrative outline
+# Live narrative
 
-Atlantis runs Terraform/OpenTofu plans and applies from pull requests. Every slide reinforces this idea.
+Ten English slides with Chinese narration. The ten-slide reference deck is separate.
 
 ## 1. Atlantis
 
-Define Atlantis before introducing the workflow.
+先定义 Atlantis。
 
 Target: 0:00–0:20.
 
 ## 2. The pull request becomes the workflow.
 
-Trace the numbered loop once; pause at review.
+沿图只走一遍；区分编排与执行。
 
 Target: 0:20–1:10.
 
 ## 3. One change. One PR conversation.
 
-Explain the engineer experience; do not repeat the architecture.
+变更小不等于安全。
 
-Target: 1:10–1:50.
+Target: 1:10–1:45.
 
 ## 4. Shared review. Controlled execution.
 
-Three outcomes; centralized execution is not a security guarantee.
+开发者提议，平台规则控制。
 
-Target: 1:50–2:15.
+Target: 1:45–2:10.
 
 ## 5. Connect Git to your infrastructure tools.
 
-Point to the flow; do not read the host list.
+Git 接入与云 Provider 是两层。
 
-Target: 2:15–2:40.
+Target: 2:10–2:45.
 
 ## 6. Extend the pull-request review.
 
-Policy and cost are separate, optional review inputs.
+策略、成本是配置后的扩展。
 
-Target: 2:40–3:00.
+Target: 2:45–3:10.
 
 ## 7. Run Atlantis in your infrastructure.
 
-Hosting choice does not determine provider support.
+运行位置不决定管理目标。
 
-Target: 3:00–3:20.
+Target: 3:10–3:35.
 
 ## 8. Multiple stacks. One PR workflow.
 
-Say the year; point to the official survey blog.
+强调 2024 年和 354 份回复。
 
-Target: 3:20–3:50.
+Target: 3:35–4:05.
 
 ## 9. Toward Atlantis 1.0.0
 
-Keep project direction brief and explicitly provisional.
+规划不等于已发布。
 
-Target: 3:50–4:05.
+Target: 4:05–4:25.
 
 ## 10. Infrastructure is code.
 
-Point to discovery links, then hold the final slide.
+指向社区与展台；结束后保持页面。
 
-Target: 4:05–4:30.
+Target: 4:25–4:55.

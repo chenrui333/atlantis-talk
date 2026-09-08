@@ -1,51 +1,39 @@
-"""Generate rehearsal documents from the narration embedded in the deck."""
-import json
+"""Chinese rehearsal material; English slides. Count Han characters separately."""
+import json,re
 from pathlib import Path
-
-slides = json.loads(Path('narration.json').read_text())
-
-def stamp(seconds):
-    return f'{seconds // 60}:{seconds % 60:02}'
-
-def spoken(slide):
-    return ' '.join(filter(None, [slide['narration'], slide['transition']]))
-
-planned = sum(s['seconds'] for s in slides)
-total = sum(len(spoken(s).split()) for s in slides)
-short_scripts = []
-for slide in slides:
-    short = slide['narration']
-    for sentence in slide['emergency_skip']:
-        assert short.count(sentence) == 1, sentence
-        short = short.replace(sentence, '').replace('  ', ' ')
-    short_scripts.append(' '.join(filter(None, [short.strip(), slide['transition']])))
-short_words = sum(len(s.split()) for s in short_scripts)
-
-script = ['# Full script', '', f'English · Rui Chen · September 8, 2026 · Target {stamp(planned)}; hard limit 5:00.', '', 'Speak the narration and transition only. Cues and timing metadata are not spoken.', '']
-timing = ['# Timing', '', '| Slide | Target | Cumulative | Spoken words | Pace including pauses |', '| --- | ---: | --- | ---: | ---: |']
-cues = ['# Speaker cues', '', f'**{stamp(planned)} target · 5:00 hard stop · No live demo or planned Q&A**', '']
-outline = ['# Narrative outline', '', 'Atlantis runs Terraform/OpenTofu plans and applies from pull requests. Every slide reinforces this idea.', '']
-elapsed = 0
-for i, slide in enumerate(slides, 1):
-    end = elapsed + slide['seconds']
-    words = len(spoken(slide).split())
-    script += [f"## Slide {i} — {slide['title']}", '', f'Target: {stamp(elapsed)}–{stamp(end)} · {slide["seconds"]} seconds · {words} spoken words.', '', f'Cue: {slide["cue"]}', '', slide['narration'], '']
-    script += [f'Transition: {slide["transition"]}' if slide['transition'] else ('Transition (not spoken): Hold the closing slide.' if i == len(slides) else 'Transition (not spoken): Advance after the final sentence.'), '', 'Emergency cut: ' + (' '.join(slide['emergency_skip']) if slide['emergency_skip'] else 'None; retain this slide’s narration.'), '']
-    if slide.get('reference_notes'):
-        script += ['Reference notes (not spoken): ' + slide['reference_notes'], '']
-    timing += [f'| {i} | {slide["seconds"]}s | {stamp(elapsed)}–{stamp(end)} | {words} | {words * 60 / slide["seconds"]:.1f} wpm |']
-    cues += [f'{i}. **{stamp(elapsed)} — {slide["title"]}** {slide["cue"]}', f'   Transition: “{slide["transition"]}”' if slide['transition'] else ('   Final line: “From the pull request.”' if i == len(slides) else '   Advance after the final sentence.'), '']
-    outline += [f'## {i}. {slide["title"]}', '', slide['purpose'], '', f'Target: {stamp(elapsed)}–{stamp(end)}.', '']
-    elapsed = end
-script += ['## Emergency 4-minute version', '', 'Use the same ten slides. Skip exactly these sentences; do not speak faster. Keep the definition, full-plan review, configured approvals, dated survey evidence, and final line.', '']
-for i, slide in enumerate(slides, 1):
-    for sentence in slide['emergency_skip']:
-        script += [f'- Slide {i}: Skip “{sentence}”']
-script += ['', '### Short script for rehearsal', '']
-for i, short in enumerate(short_scripts, 1):
-    script += [f'**Slide {i}.** {short}', '']
-script += [f'Total words including transitions: **{total}**.', f'Speaking alone at 130–145 wpm: **{stamp(round(total * 60 / 145))}–{stamp(round(total * 60 / 130))}**.', f'Planned duration with pauses: **{stamp(planned)}**. Safety margin: **{300 - planned} seconds**.', f'Emergency: **{short_words} words**, approximately **{stamp(round(short_words * 60 / 130 + 15))}** at 130 wpm with 15 seconds of pauses.', '']
-timing += ['', f'**{total} spoken words · {stamp(planned)} planned · {300 - planned} seconds safety margin.**', '', 'Counts include transitions. Cues are not spoken; hyphenated terms count as one word. Release numbers are written as spoken words.', '', f'- 130 wpm: {total * 60 / 130:.1f}s narration + {planned - total * 60 / 130:.1f}s pauses = {stamp(planned)}.', f'- 145 wpm: {total * 60 / 145:.1f}s narration; pause rather than adding material.', f'- 120 wpm: {total * 60 / 120 + 12:.1f}s with 12s pauses, still within five minutes.', '', 'These are estimates, not a recording of Rui rehearsing. Use a stopwatch for the actual rehearsal.', '', '## Rehearsal checkpoints', '', '- By 0:20: definition and problem are complete.', '- By 1:10: the workflow is explained.', '- By 1:50: the PR example is complete.', f'- By {stamp(planned - slides[-1]["seconds"])}: switch to the closing slide.', f'- At {stamp(planned)}: stop speaking; leave the URL and QR visible.', '', 'If behind at 1:50, use the listed emergency cuts. If the host grants only four minutes, rehearse the complete emergency version in script.md.', '', f'Emergency total: {short_words} words; {stamp(round(short_words * 60 / 130 + 15))} at 130 wpm with 15s pauses.', '']
-for name, lines in [('script.md', script), ('timing.md', timing), ('speaker-cues.md', cues), ('outline.md', outline)]:
-    Path(name).write_text('\n'.join(lines))
-print(f'{total} words; emergency {short_words}; target {stamp(planned)}')
+slides=json.loads(Path('narration.json').read_text())
+# Approximate spoken syllables for technical terms, not English word counts.
+syllables={'rui':1,'atlantis':4,'terraform':3,'opentofu':4,'git':1,'webhook':2,'apply':2,'api':3,'ci':2,'github':2,'gitlab':2,'gitea':3,'forgejo':3,'gitee':2,'provider':3,'helm':1,'kubernetes':4,'terragrunt':3,'conftest':2,'infracost':3,'grand':1,'ballroom':2,'one':1,'t':1,'chart':1}
+def counts(t):
+    han=len(re.findall(r'[\u3400-\u9fff]',t))
+    terms=re.findall(r'[A-Za-z]+',t)
+    assert all(w.lower() in syllables for w in terms)
+    return han,len(terms),han+sum(syllables[w.lower()] for w in terms)
+def stamp(s):return f'{s//60}:{s%60:02}'
+planned=sum(n['seconds'] for n in slides)
+script=['# 中文演讲稿 / Chinese speaker notes','','English slides · 中文讲述 · Rui Chen · 2026-09-08',f'目标 {stamp(planned)}；硬上限 5:00。只朗读正文，提示与技术参考不朗读。','']
+timing=['# 中文讲述计时','','| 页 | 时间 | 累计 | 汉字 | 英文词项 | 估算发音单位 |','| --- | ---: | --- | ---: | ---: | ---: |']
+cues=['# 上台提示卡','',f'{stamp(planned)} 目标；5:00 停止。无现场演示。','']
+outline=['# Live narrative','','Ten English slides with Chinese narration. The ten-slide reference deck is separate.','']
+elapsed=0;shorts=[]
+for i,n in enumerate(slides,1):
+    end=elapsed+n['seconds'];t=n['narration']+n['transition'];han,terms,units=counts(t)
+    script += [f'## {i} — {n["title"]}','',f'目标：{stamp(elapsed)}–{stamp(end)}（{n["seconds"]} 秒）',f'提示：{n["cue"]}','',n['narration'],'','转场：'+(n['transition'] or ('保持结尾页。' if i==len(slides) else '说完正文后换页。')),'','超时可删：'+(' '.join(n['emergency_skip']) or '无；保留这页核心内容。'),'','技术参考（不朗读）：'+n['reference_notes'],'']
+    timing.append(f'| {i} | {n["seconds"]}s | {stamp(elapsed)}–{stamp(end)} | {han} | {terms} | {units} |')
+    cues += [f'{i}. **{stamp(elapsed)} — {n["title"]}** {n["cue"]}','']
+    outline += [f'## {i}. {n["title"]}','',n['purpose'],'',f'Target: {stamp(elapsed)}–{stamp(end)}.','']
+    short=t
+    for cut in n['emergency_skip']:
+        assert short.count(cut)==1
+        short=short.replace(cut,'')
+    shorts.append(short);elapsed=end
+full=''.join(n['narration']+n['transition'] for n in slides);han,terms,units=counts(full);short_units=counts(''.join(shorts))[2]
+script += ['## 紧急四分钟版','','同样十页，只删以下句子，不加快语速。','']
+for i,n in enumerate(slides,1):
+    for cut in n['emergency_skip']:script.append(f'- 第 {i} 页：删去「{cut}」')
+script += ['','### 四分钟版全文','']
+for i,t in enumerate(shorts,1):script += [f'**第 {i} 页** {t}','']
+script += [f'全文：{han} 个汉字，{terms} 个英文词项。约 {units} 个发音单位。',f'计划：{stamp(planned)}，安全余量 {300-planned} 秒。中文稿不使用英文空格分词或英文 wpm 估时。','']
+timing += ['',f'**{han} 个汉字 + {terms} 个英文词项；约 {units} 个发音单位；{stamp(planned)} 计划；{300-planned} 秒余量。**','','估时方法：汉字按一个发音单位；英文术语按 write-materials.py 中公开的近似音节表加权。专有名词读法有差异，此模型不是实测。',f'- 每分钟 240 个单位：正文约 {round(units/4)} 秒，计划内约 {round(planned-units/4)} 秒用于停顿、指图与换页。',f'- 较慢的每分钟 220 个单位：正文约 {round(units*60/220)} 秒，加 15 秒停顿约 {stamp(round(units*60/220+15))}。',f'- 紧急版：{short_units} 个单位，每分钟 220 个单位加 15 秒停顿，约 {stamp(round(short_units*60/220+15))}。','','用秒表朗读校准。第 9 页后在 4:25 进入结尾；落后就删标记句子，不展开完整兼容列表。','']
+for filename,lines in [('script.md',script),('timing.md',timing),('speaker-cues.md',cues),('outline.md',outline)]:Path(filename).write_text('\n'.join(lines))
+print(f'{han} Han characters, {terms} English tokens, {units} weighted units; {stamp(planned)} planned; emergency {short_units} units')

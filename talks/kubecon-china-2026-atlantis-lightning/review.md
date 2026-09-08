@@ -67,3 +67,13 @@ Applied the representative-example rule. Removed the visible full Git host list 
 Kept all ten narrative beats and every spoken sentence. The hero now has one PR/results loop and a separate execution layer. The PR example uses a timeline. Platform outcomes form a connected operating model. Slides 5–7 use three different compositions: horizontal architecture, branching review context, and hosting choices. The survey keeps the exact 354 count and qualitative source wording. The 1.0 slide shows a version boundary, with its draft caveat intact. The closing combines the original message with one QR and verified community discovery links.
 
 Second visual critique, after viewing every page and the contact sheet: the sequence has fewer filled rectangles, stronger whitespace and consistent teal arrows. Each slide has a dominant visual idea. No new tool names or narration were added. The closing is the densest page, but its message and discovery areas are separated; it remains displayed after speaking so attendees can use the links. Main body type is 21–36pt, with 18–19pt discovery labels/caveats and smaller template metadata. Physical projection and native PowerPoint playback remain untested.
+
+## Final five-slide live version — supersedes ten-slide plans
+
+Organizer guidance now governs the total count: five pages including title and close. Preserved the preceding polished ten-slide deck as slides-reference-10.* before changing the main artifacts. Kept the hero and conversation; moved platform outcomes into narration; combined Git/IaC architecture with dated adoption evidence; moved deployment/extensions into notes; kept 1.0 discussion in reference material.
+
+English slide faces, Chinese speaker notes. China-relevant cloud examples are explicitly provider targets. Added Grand Ballroom I to the Pavilion T-10 line. Final output is slidesv3.pdf, with editable slides.pptx and slides.mjs. Narration is prepared for a five-minute slot, targeting 4:55; shorter natural delivery is acceptable.
+
+## Final selection: v2 with Chinese narration
+
+Rui chose the ten-slide v2 after evaluating v3. Restored the full ecosystem, deployment, survey and 1.0 sequence. Added the useful v3 Git/cloud-provider distinction and full pavilion location, keeping the rest of the original v2 visuals. Chinese narration is rewritten per slide and embedded. Current output: slidesv2.pdf. Five-slide slidesv3.pdf and its source/notes remain separate.

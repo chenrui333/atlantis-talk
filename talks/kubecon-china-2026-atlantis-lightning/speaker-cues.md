@@ -1,33 +1,23 @@
-# Speaker cues
+# 上台提示卡
 
-**4:30 target · 5:00 hard stop · No live demo or planned Q&A**
+4:55 目标；5:00 停止。无现场演示。
 
-1. **0:00 — Atlantis** Define Atlantis before introducing the workflow.
-   Advance after the final sentence.
+1. **0:00 — Atlantis** 先定义 Atlantis。
 
-2. **0:20 — The pull request becomes the workflow.** Trace the loop once; distinguish orchestration from provider/state execution.
-   Advance after the final sentence.
+2. **0:20 — The pull request becomes the workflow.** 沿图只走一遍；区分编排与执行。
 
-3. **1:10 — One change. One PR conversation.** Explain the engineer experience; do not repeat the architecture.
-   Advance after the final sentence.
+3. **1:10 — One change. One PR conversation.** 变更小不等于安全。
 
-4. **1:50 — Shared review. Controlled execution.** Three outcomes; centralized execution is not a security guarantee.
-   Advance after the final sentence.
+4. **1:45 — Shared review. Controlled execution.** 开发者提议，平台规则控制。
 
-5. **2:15 — Connect Git to your infrastructure tools.** Point to the flow; do not read the host list.
-   Advance after the final sentence.
+5. **2:10 — Connect Git to your infrastructure tools.** Git 接入与云 Provider 是两层。
 
-6. **2:40 — Extend the pull-request review.** Policy and cost are separate, optional review inputs.
-   Advance after the final sentence.
+6. **2:45 — Extend the pull-request review.** 策略、成本是配置后的扩展。
 
-7. **3:00 — Run Atlantis in your infrastructure.** Hosting choice does not determine provider support.
-   Advance after the final sentence.
+7. **3:10 — Run Atlantis in your infrastructure.** 运行位置不决定管理目标。
 
-8. **3:20 — Multiple stacks. One PR workflow.** Say the year; point to the official survey blog.
-   Advance after the final sentence.
+8. **3:35 — Multiple stacks. One PR workflow.** 强调 2024 年和 354 份回复。
 
-9. **3:50 — Toward Atlantis 1.0.0** Keep project direction brief and explicitly provisional.
-   Advance after the final sentence.
+9. **4:05 — Toward Atlantis 1.0.0** 规划不等于已发布。
 
-10. **4:05 — Infrastructure is code.** Point to discovery links, then hold the final slide.
-   Final line: “From the pull request.”
+10. **4:25 — Infrastructure is code.** 指向社区与展台；结束后保持页面。

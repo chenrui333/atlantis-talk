@@ -1,38 +1,20 @@
-# Final validation — visual refinement
+# Final v2 validation — English slides, Chinese narration
 
-Validated September 7, 2026. This report supersedes earlier visual and structural QA.
+Validated September 7, 2026. Rui selected the ten-slide v2 after evaluating the five-slide v3. This report supersedes prior live-deck selections.
 
-## Artifacts and timing
+- Ten static 16:9 slides; source slides.mjs, editable slides.pptx, final slidesv2.pdf.
+- All ten slide notes match narration.json and script.md, including Chinese narration and non-spoken references. Package validation passed.
+- Template-baselined PPTX skill validation passed. All 24 master/layout/theme package parts match the official-template v2 baseline.
+- LibreOffice opened the PPTX and exported ten PDF pages. English slide fonts are embedded Liberation Sans, substituted for Arial.
+- Rendered all ten PNGs. Eight unchanged PNGs match the previously individually inspected v2 renders byte-for-byte; changed slides 5 and 10 were inspected individually. The complete contact sheet was inspected again as a sequence.
+- Slide 5 separates public/self-hosted Git integration from IaC execution and cloud-provider examples. Slide 10 adds Grand Ballroom I to the existing pavilion line. Neither has visible clipping, overlap or a footer collision. The remaining eight slide faces are unchanged.
+- Native editable text/shapes retained; no diagram screenshots, animations or live demo.
+- One QR only. Source and rendered closing QR decode to https://www.runatlantis.io/.
+- PPTX hyperlinks returned HTTP 200; PDF link annotations retain the survey, draft proposal, docs, source, community document and pavilion directory links.
+- Chinese narration: 771 Han characters, 41 English terms, approximately 884 pronunciation units. Planned 4:55 including pauses; shorter natural delivery is fine. Timing is modeled, not a measured recording. Emergency cuts and complete short script are provided.
+- Current technical claims retain source IDs. China-relevant provider distinctions are CN01–CN03. PR #5296 rechecked: open, draft, unmerged; no upcoming release date claimed.
+- Original v2 is preserved as slides-reference-10.pptx/pdf/mjs plus English notes/script. The separate five-slide v3 remains slidesv3.pdf/pptx/mjs with narration-v3.json and script-v3.md. Earlier expanded artifacts are untouched.
 
-- Ten static 16:9 slides; official organizer template and embedded assets.
-- 426 spoken words, unchanged; 4:30 planned, 30 seconds margin. Emergency version: 403 words. Human delivery is modeled, not measured.
-- PPTX opened/exported with LibreOffice 7.3.7.2. PDF contains ten 960 × 540 point pages; all ten PNG previews were generated from it.
-- Each PNG was visually inspected individually, then the contact sheet was inspected for sequence, visual rhythm and beauty.
-- Package validator and template-baselined PPTX skill validator passed. All ten embedded notes, including non-spoken reference notes, match the narration source and script.
-- Original master/layout/theme package parts and cover slide XML match the preceding committed template-based deck. Expanded/reference artifacts are unchanged.
-- Diagrams remain native editable PowerPoint shapes/text. One locally embedded QR, no online rendering dependencies or live demo.
-- Source QR and rendered closing QR both decode to https://www.runatlantis.io/.
-- PPTX hyperlinks resolve through HTTPS. PDF fonts are embedded Liberation Sans, the renderer's Arial substitute.
+## Limits
 
-## Rendered visual inspection
-
-| Slide | Result |
-| --- | --- |
-| 1 | Official skyline, accepted title and undistorted Atlantis mark unchanged. |
-| 2 | Clean forward/return PR loop; execution layer separated; no arrow crossing. |
-| 3 | Four aligned timeline events; plan and command highlighted; illustrative caveat intact. |
-| 4 | Connected proposal/governance/visibility model replaces independent bullets. |
-| 5 | Native architecture with representative examples; no support matrix. |
-| 6 | Policy/cost context branches into review, without surrounding cards or extra vendors. |
-| 7 | Self-hosting is the headline; a three-way branch presents deployment choices. |
-| 8 | Large exact response count and qualitative findings; clear 2024 provenance, no inferred percentages. |
-| 9 | Visual version boundary; planning/not-released caveat remains prominent. |
-| 10 | Strong closing message, one QR, docs/source/community links and China pavilion information; footer remains clear. |
-
-No visible clipping, text overlap, broken assets or template deviations found. Main content is readable at preview scale; physical room/projector performance remains an AV check. Discovery and caveat labels use 18–19pt; most body text is 21pt or larger. Slides 5–7 have distinct compositions. No features, integrations or spoken sentences were added.
-
-## Sources and limitations
-
-Existing technical and historical claims retain their source-manifest entries. The new community schedule and linked agenda/calendar access were checked against both the public community document and the official v0.37.0 announcement, and recorded as E04 in sources.md. A recurring meeting schedule does not promise a meeting during conference week. China pavilion details remain sourced to the organizer's directory.
-
-Native PowerPoint automation remains denied by macOS; only LibreOffice opening/export was tested. The normal laptop/projector check is outstanding. The public schedule's language label and final organizer upload route remain unresolved. No organizer submission or contact was performed. The ten-slide count follows Rui's explicit instruction; it is not an assertion of organizer approval.
+Native PowerPoint automation remains denied by macOS; LibreOffice opening/export is tested. Native presenter-mode Chinese glyph rendering, physical projection and Rui’s actual speaking time still need the normal laptop rehearsal. No organizer upload occurred. The supplied 3–5-slide guidance remains a constraint; ten slides follow Rui’s explicit later selection, not verified organizer approval. The five-slide v3 is available as an alternative.

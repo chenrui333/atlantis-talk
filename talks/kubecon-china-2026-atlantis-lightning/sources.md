@@ -1,6 +1,6 @@
 # Sources and factual decisions
 
-Verified September 7, 2026. Current slide numbering is for the ten-slide introduction. Historical 2024 survey evidence is distinct from current capabilities and the draft 1.0 proposal. Quantities are not inferred from chart images.
+Verified September 7, 2026. Current slide numbering is for the ten-slide v2 selected by Rui; five-slide v3 is preserved separately. Historical 2024 survey evidence is distinct from current capabilities and the draft 1.0 proposal. Quantities are not inferred from chart images.
 
 ## Current claim manifest
 
@@ -9,19 +9,19 @@ Verified September 7, 2026. Current slide numbering is for the ten-slide introdu
 | C01 | 1–5, 10 | Self-hosted PR automation runs Terraform/OpenTofu; Atlantis coordinates execution and reports results. | [Using Atlantis](https://www.runatlantis.io/docs/using-atlantis) |
 | C02 | 1 | Rui Chen is listed as an Atlantis maintainer. | [Maintainers](https://github.com/runatlantis/atlantis/blob/fb235157074a25b8fb4bdbf6f43f9eb4f528f6bb/MAINTAINERS.md) |
 | C03 | Background | Laptop handoffs can separate execution from review; not a claim about all teams. | [Local applies](https://www.runatlantis.io/blog/2018/terraform-and-the-dangers-of-applying-locally.html) |
-| C04 | 5 | Autoplanning detects affected projects subject to configuration. | [Autoplanning](https://www.runatlantis.io/docs/autoplanning) |
+| C04 | 5 (reference notes) | Autoplanning detects affected projects subject to configuration. | [Autoplanning](https://www.runatlantis.io/docs/autoplanning) |
 | C05 | 2–4 | Requirements such as approval are configured; not universal defaults. | [Command requirements](https://www.runatlantis.io/docs/command-requirements) |
 | C06 | 2–3 | Terraform/OpenTofu owns provider/state operations. Apply-before-merge is the illustrated workflow. The PR and plan counts are editorial examples. | [Using Atlantis](https://www.runatlantis.io/docs/using-atlantis), [Security](https://www.runatlantis.io/docs/security) |
 | P01 | 5 | GitHub, GitLab, Gitea/compatible forks such as Forgejo, Bitbucket Cloud/Server, Azure DevOps. No feature-parity guarantee. | [Git hosts](https://www.runatlantis.io/docs/requirements#git-host) |
 | P02 | 5 | Select terraform or opentofu as the project distribution. | [Distributions](https://www.runatlantis.io/docs/repo-level-atlantis-yaml#terraform-distributions) |
-| P03 | 5 | Terragrunt uses custom commands and requires its binary; it is not an Atlantis provider or target. | [Terragrunt workflows](https://www.runatlantis.io/docs/custom-workflows#terragrunt) |
+| P03 | 6 (notes) | Terragrunt uses custom commands and requires its binary; it is not an Atlantis provider or target. | [Terragrunt workflows](https://www.runatlantis.io/docs/custom-workflows#terragrunt) |
 | P04 | 6 | Optional server-side Conftest policy evaluation of plans; gating and policy approvals require configuration. | [Conftest policy checks](https://www.runatlantis.io/docs/policy-checking) |
 | P05 | 6 | Infracost can add cost estimates through workflow integration. It is not bundled by default or a native plugin system. Its docs also recommend standalone VCS apps for some setups. No image-version recommendation here. | [Infracost's Atlantis integration](https://www.infracost.io/docs/integrations/atlantis/) |
 | P06 | 7 | Official Helm chart and Docker image; server/binary deployment. Docs cover Fargate, GKE/GCE, Azure AKS/ACI. Some referenced Terraform modules are community-maintained. Hosting Atlantis does not determine which provider targets its tooling can manage. | [Deployment](https://www.runatlantis.io/docs/deployment) |
 | C16 | 10 | CNCF Sandbox; Apache 2.0 license. | [CNCF](https://www.cncf.io/projects/atlantis/), [License](https://github.com/runatlantis/atlantis/blob/fb235157074a25b8fb4bdbf6f43f9eb4f528f6bb/LICENSE) |
 | C17 | 10 | Official guide and contribution path. | [Guide](https://www.runatlantis.io/guide), [GitHub](https://github.com/runatlantis/atlantis) |
 
-## 2024 survey evidence — slide 8
+## 2024 survey evidence — v2 slide 8
 
 [Official Atlantis User Survey Results](https://www.runatlantis.io/blog/2024/april-2024-survey-results). Survey opened in April 2024 for two months. It reports **354 responses**, not unique organizations, installations or market share. Visible label: Atlantis User Survey · 2024 · n=354.
 
@@ -33,7 +33,7 @@ Verified September 7, 2026. Current slide numbering is for the ten-slide introdu
 | S04 | Deployment question | Kubernetes and/or AWS common; categories need not be mutually exclusive. |
 | S05 | Missing features question | Drift detection and infrastructure improvements led normalized free-text requests. Background only. |
 
-## 1.0.0 planning — slide 9
+## 1.0.0 planning — v2 slide 9
 
 - **R01:** [Draft announcement PR #5296](https://github.com/runatlantis/atlantis/pull/5296) is open, draft and unmerged as checked September 7. It proposes stability, backwards compatibility and clearer semantic versioning. The draft's release-announcement phrasing is NOT evidence that 1.0 shipped. Slide labels this planning, not released; no date promised.
 - **R02:** [Release tracking issue #2496](https://github.com/runatlantis/atlantis/issues/2496) remains open. Its older checklist includes completed API/streaming work; we do not present that as all future work.
@@ -48,7 +48,7 @@ Planning can execute code; repository trust and permissions remain essential. [S
 
 [Official 2026 schedule](https://www.lfopensource.cn/kubecon-cloudnativecon-openinfra-summit-pytorch-conference-china/program/schedule/) lists the exact accepted title: **Project Lightning Talk: Atlantis: Terraform Pull Request Automation for Cloud Native Teams**, Rui Chen, **September 8, 11:35–11:40, 5B + C**. Times are China Standard Time (UTC+8). Atlantis is the fifth project talk after opening remarks; Karmada precedes it and OpenKruise follows it.
 
-The schedule labels this session **Chinese**. The requested deliverables remain English. Rui needs to reconcile that language label with the organizers; no schedule edit or organizer message has been made.
+The schedule labels this session **Chinese**. The live slides remain English and narration is Chinese, matching Rui’s delivery choice and the public language label.
 
 [Official event homepage](https://www.lfopensource.cn/kubecon-cloudnativecon-openinfra-summit-pytorch-conference-china/) and [LF announcement](https://www.linuxfoundation.org/press/kubecon-cloudnativecon-openinfra-summit-and-pytorch-conference-unite-in-china-to-scale-ai) include September 7 co-located activities. The main conference is September 8–9; title slide shows the talk date, September 8. Venue: Shanghai International Convention Center.
 
@@ -74,7 +74,7 @@ Rui subsequently requested ten slides to reduce per-slide density and broaden th
 
 ## Visual asset manifest
 
-Official icon: assets/atlantis-icon.svg, CNCF source above; title bbox 7.5,1.71,1.25,1.25 inches, alt text embedded. Original conference masters/layouts/artwork remain native and uniformly scaled. New diagrams are native text/shapes; no vendor-logo collage. QR generated locally, slide 10 bbox 9.12,2.44,3.3,3.3; four-module quiet zone; direct homepage URL. Survey is editable text with a hyperlink to the source blog, not a raster chart. Retained atlantis-wordmark.svg is unused.
+Official icon: assets/atlantis-icon.svg, CNCF source above; title bbox 7.5,1.71,1.25,1.25 inches, alt text embedded. Original conference masters/layouts/artwork remain native and uniformly scaled. New diagrams are native text/shapes; no vendor-logo collage. QR generated locally, slide 10 bbox 10.23,2.38,2.38,2.38; four-module quiet zone; direct homepage URL. Survey is editable text with a hyperlink to the source blog, not a raster chart. Retained atlantis-wordmark.svg is unused.
 
 ## Structural-pass verification — September 7, 2026
 
@@ -96,4 +96,18 @@ References C01/C05/C06, C18, P01–P07, S01–S05, R01 and E03 are attached to n
 
 ## Community discovery (verified September 7, 2026)
 
-- **E04 — Slide 10:** The official [community agenda and notes](https://docs.google.com/document/d/1EzseHmT4Zarj-_7MO8ud5mHByIJGIHS7JdoNNK9ZckU/edit) states that general meetings occur every two weeks on Wednesday at 4pm UTC. It links the LFX meetings page for joining/calendar access. The official [v0.37.0 release announcement](https://github.com/runatlantis/atlantis/releases/tag/v0.37.0) independently identifies this document and schedule. The closing slide links the document, without exposing the long URL. Meeting dates should be checked via its calendar; this is a recurring schedule, not a promise of a meeting during conference week.
+- **E04 — v2 slide 10:** The official [community agenda and notes](https://docs.google.com/document/d/1EzseHmT4Zarj-_7MO8ud5mHByIJGIHS7JdoNNK9ZckU/edit) states that general meetings occur every two weeks on Wednesday at 4pm UTC. It links the LFX meetings page for joining/calendar access. The official [v0.37.0 release announcement](https://github.com/runatlantis/atlantis/releases/tag/v0.37.0) independently identifies this document and schedule. The closing slide links the document, without exposing the long URL. Meeting dates should be checked via its calendar; this is a recurring schedule, not a promise of a meeting during conference week.
+
+## Chinese-delivery adaptation — v2 slide 5
+
+- **CN01 — Git platform boundary:** [Official requirements](https://www.runatlantis.io/docs/requirements#git-host) explicitly cover public/private/enterprise GitLab and Gitea-compatible forks such as Forgejo. Gitee is not listed. Narration states this documentation boundary; it does not claim that no third-party adapter or fork could exist. Git itself does not establish webhook/API compatibility.
+- **CN02 — Alibaba Cloud:** [Vendor provider documentation](https://registry.terraform.io/providers/aliyun/alicloud/latest/docs) and its [source](https://github.com/aliyun/terraform-provider-alicloud/blob/master/website/docs/index.html.markdown) describe the Alibaba Cloud provider and required credentials. This is an infrastructure-tooling integration, not a built-in Atlantis cloud plugin.
+- **CN03 — Tencent Cloud:** [Vendor provider documentation](https://registry.terraform.io/providers/tencentcloudstack/tencentcloud/latest/docs) and its [source](https://github.com/tencentcloudstack/terraform-provider-tencentcloud/blob/master/website/docs/index.html.markdown) describe the Tencent Cloud provider and required credentials. Provider versions, resource coverage and tool compatibility still need project-specific configuration/testing. The diagram expresses the architecture; no universal OpenTofu/provider-version guarantee is asserted.
+
+Verified directly against upstream provider documentation through GitHub API on September 7, 2026. Alibaba Cloud and Tencent Cloud are representative provider targets, not a vendor support matrix.
+
+## Organizer guidance supplied by Rui
+
+Live talk: five minutes, three to five slides, 16:9; event branding optional. The five-slide v3 satisfies the total-count wording. Rui subsequently selected the ten-slide v2; this is not a claim of organizer approval. Both retain the official template. Latest confirmed pavilion details: Atlantis, Tuesday 10:30–14:30, T-10, Grand Ballroom I (China Standard Time). The supplied table-number/shift field labels appear reversed; the rendered slide treats T-10 as the table and the hours as the shift.
+
+Final v2 check: draft PR #5296 remains open, draft and unmerged. The current Chinese narration calls it planning and promises no release date.

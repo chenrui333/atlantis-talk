@@ -8,7 +8,7 @@ deck.title='Project Lightning Talk: Atlantis: Terraform Pull Request Automation 
 deck.company='Atlantis'; deck.lang='en-US';
 deck.theme={headFontFace:'Arial',bodyFontFace:'Arial',lang:'en-US'};
 const C={bg:'FFFFFF',panel:'EAF1F3',line:'A6BAC1',text:'083E4F',muted:'405965',blue:'086679',amber:'926413'};
-const W=13.333333,H=7.5, M=.62; const notes=JSON.parse(fs.readFileSync('narration.json','utf8'));
+const W=13.333333,H=7.5, M=.62; const notes=JSON.parse(fs.readFileSync('narration-reference-10.json','utf8'));
 const shape=deck.ShapeType;
 function text(s,t,x,y,w,h,size=24,color=C.text,more={}) {s.addText(t,{x,y,w,h,fontFace:'Arial',fontSize:size,color,margin:0,breakLine:false,vertAnchor:'mid',...more});}
 function box(s,x,y,w,h,fill=C.panel,line=fill){s.addShape(shape.rect,{x,y,w,h,fill:{color:fill},line:{color:line,width:1}});}
@@ -34,8 +34,8 @@ function addNotes(s,i){
  const n=notes[i-1];
  const start=notes.slice(0,i-1).reduce((sum,n)=>sum+n.seconds,0);
  const clock=t=>`${Math.floor(t/60)}:${String(t%60).padStart(2,'0')}`;
- const chars=(n.narration+n.transition).match(/[\u3400-\u9fff]/g)?.length || 0;
- s.addNotes(`Target: ${clock(start)}–${clock(start+n.seconds)} (${n.seconds} seconds)\nChinese characters: ${chars}; see timing.md for English terms\n提示: ${n.cue}\n\n${n.narration}\n\nTransition: ${n.transition || (i===notes.length?'Hold the closing slide.':'Advance after the final sentence.')}\n\nEmergency cuts:\n${n.emergency_skip.join('\n') || 'None; retain this slide’s narration.'}\n\nReference notes (not spoken):\n${n.reference_notes || 'See sources.md for factual references.'}`);
+ const words=`${n.narration} ${n.transition}`.trim().split(/\s+/).length;
+ s.addNotes(`Target: ${clock(start)}–${clock(start+n.seconds)} (${n.seconds} seconds)\nSpoken words: ${words}\nCue: ${n.cue}\n\n${n.narration}\n\nTransition: ${n.transition || (i===notes.length?'Hold the closing slide.':'Advance after the final sentence.')}\n\nEmergency cuts:\n${n.emergency_skip.join('\n') || 'None; retain this slide’s narration.'}\n\nReference notes (not spoken):\n${n.reference_notes || 'See sources.md for factual references.'}`);
 }
 // 1 — Accepted title is retained verbatim (line breaks only).
 {
@@ -82,18 +82,14 @@ const rows=[['Collaborative','Developers propose'],['Controlled','Platform rules
 rows.forEach((r,i)=>{const y=2.65+i*1.16;dot(s,1.08,y+.3,.12);if(i<2)line(s,1.08,y+.5,0,.71,C.blue,true);text(s,r[0],1.55,y,3.55,.55,29,C.blue,{bold:true});text(s,r[1],5.35,y,7.0,.6,28,C.text);});
 addNotes(s,4);
 }
-// 5 — Separate Git integration from infrastructure-provider execution.
+// 5 — Category, mechanism, execution: representative examples only.
 {
 const s=base(5,'Core integrations',notes[4].title);
-label(s,'Git providers','GitHub · GitLab',.8,3.08,3.2,'center');
-node(s,'Atlantis','PR orchestration',5.05,2.98,3.25,1.4);
-label(s,'IaC execution','Terraform / OpenTofu',9.3,3.08,3.25,'center');
-line(s,4.05,3.7,.78,0,C.blue,true);line(s,8.52,3.7,.56,0,C.blue,true);
-text(s,'Public or self-hosted',.8,5.35,3.5,.65,23,C.blue,{bold:true});
-line(s,10.9,4.65,0,.4,C.blue,true);
-text(s,'Cloud providers',5.0,5.2,7.5,.45,24,C.blue,{bold:true,align:'right'});
-text(s,'e.g. Alibaba Cloud · Tencent Cloud',5.0,5.87,7.5,.5,26,C.text,{align:'right'});
-addNotes(s,5);
+label(s,'Git providers','GitHub · GitLab',.8,3.18,3.2,'center');
+node(s,'Atlantis','PR orchestration',5.05,3.08,3.25,1.4);
+label(s,'IaC execution','Terraform / OpenTofu',9.3,3.18,3.25,'center');
+line(s,4.05,3.8,.78,0,C.blue,true);line(s,8.52,3.8,.56,0,C.blue,true);
+text(s,'Purpose-built infrastructure PR automation',.8,5.75,11.8,.65,30,C.blue,{bold:true,align:'center'});addNotes(s,5);
 }
 // 6 — Platform tooling enriches the review, with two examples.
 {
@@ -153,8 +149,8 @@ s.addImage({path:'assets/qr.png',altText:'QR code for https://www.runatlantis.io
 text(s,'COMMUNITY',6.5,4.93,6.0,.3,18,C.blue,{bold:true});
 text(s,'Biweekly · Wed 16:00 UTC',6.5,5.3,6.0,.35,22,C.text);
 text(s,'Agenda / notes + add to calendar',6.5,5.73,6.1,.35,21,C.blue,{hyperlink:{url:community}});
-text(s,'Project Pavilion · T-10 · Tue 10:30–14:30 · Grand Ballroom I',M,6.36,11.8,.3,19,C.muted,{hyperlink:{url:'https://www.lfopensource.cn/kubecon-cloudnativecon-openinfra-summit-pytorch-conference-china/features-add-ons/project-engagement/#project-table-directory'}});addNotes(s,10);
+text(s,'Project Pavilion · T-10 · Tue 10:30–14:30',M,6.36,11.8,.3,19,C.muted,{hyperlink:{url:'https://www.lfopensource.cn/kubecon-cloudnativecon-openinfra-summit-pytorch-conference-china/features-add-ons/project-engagement/#project-table-directory'}});addNotes(s,10);
 }
-await deck.writeFile({fileName:'slides.pptx'});
-execFileSync('uv',['run','--with','defusedxml==0.7.1','python','apply-template.py'],{stdio:'inherit'});
+await deck.writeFile({fileName:'slides-reference-10.pptx'});
+execFileSync('uv',['run','--with','defusedxml==0.7.1','python','apply-template.py','slides-reference-10.pptx','narration-reference-10.json'],{stdio:'inherit'});
 console.log(`Generated ${notes.length} slides.`);

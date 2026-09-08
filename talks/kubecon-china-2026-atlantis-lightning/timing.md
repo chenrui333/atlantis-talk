@@ -1,36 +1,23 @@
-# Timing
+# 中文讲述计时
 
-| Slide | Target | Cumulative | Spoken words | Pace including pauses |
-| --- | ---: | --- | ---: | ---: |
-| 1 | 20s | 0:00–0:20 | 34 | 102.0 wpm |
-| 2 | 50s | 0:20–1:10 | 76 | 91.2 wpm |
-| 3 | 40s | 1:10–1:50 | 62 | 93.0 wpm |
-| 4 | 25s | 1:50–2:15 | 38 | 91.2 wpm |
-| 5 | 25s | 2:15–2:40 | 36 | 86.4 wpm |
-| 6 | 20s | 2:40–3:00 | 32 | 96.0 wpm |
-| 7 | 20s | 3:00–3:20 | 34 | 102.0 wpm |
-| 8 | 30s | 3:20–3:50 | 43 | 86.0 wpm |
-| 9 | 15s | 3:50–4:05 | 29 | 116.0 wpm |
-| 10 | 25s | 4:05–4:30 | 42 | 100.8 wpm |
+| 页 | 时间 | 累计 | 汉字 | 英文词项 | 估算发音单位 |
+| --- | ---: | --- | ---: | ---: | ---: |
+| 1 | 20s | 0:00–0:20 | 58 | 5 | 74 |
+| 2 | 50s | 0:20–1:10 | 114 | 10 | 145 |
+| 3 | 35s | 1:10–1:45 | 98 | 0 | 98 |
+| 4 | 25s | 1:45–2:10 | 78 | 0 | 78 |
+| 5 | 35s | 2:10–2:45 | 66 | 9 | 92 |
+| 6 | 25s | 2:45–3:10 | 63 | 3 | 71 |
+| 7 | 25s | 3:10–3:35 | 61 | 5 | 74 |
+| 8 | 30s | 3:35–4:05 | 79 | 5 | 93 |
+| 9 | 20s | 4:05–4:25 | 68 | 0 | 68 |
+| 10 | 30s | 4:25–4:55 | 86 | 4 | 91 |
 
-**426 spoken words · 4:30 planned · 30 seconds safety margin.**
+**771 个汉字 + 41 个英文词项；约 884 个发音单位；4:55 计划；5 秒余量。**
 
-Counts include transitions. Cues are not spoken; hyphenated terms count as one word. Release numbers are written as spoken words.
+估时方法：汉字按一个发音单位；英文术语按 write-materials.py 中公开的近似音节表加权。专有名词读法有差异，此模型不是实测。
+- 每分钟 240 个单位：正文约 221 秒，计划内约 74 秒用于停顿、指图与换页。
+- 较慢的每分钟 220 个单位：正文约 241 秒，加 15 秒停顿约 4:16。
+- 紧急版：782 个单位，每分钟 220 个单位加 15 秒停顿，约 3:48。
 
-- 130 wpm: 196.6s narration + 73.4s pauses = 4:30.
-- 145 wpm: 176.3s narration; pause rather than adding material.
-- 120 wpm: 225.0s with 12s pauses, still within five minutes.
-
-These are estimates, not a recording of Rui rehearsing. Use a stopwatch for the actual rehearsal.
-
-## Rehearsal checkpoints
-
-- By 0:20: definition and problem are complete.
-- By 1:10: the workflow is explained.
-- By 1:50: the PR example is complete.
-- By 4:05: switch to the closing slide.
-- At 4:30: stop speaking; leave the URL and QR visible.
-
-If behind at 1:50, use the listed emergency cuts. If the host grants only four minutes, rehearse the complete emergency version in script.md.
-
-Emergency total: 403 words; 3:21 at 130 wpm with 15s pauses.
+用秒表朗读校准。第 9 页后在 4:25 进入结尾；落后就删标记句子，不展开完整兼容列表。

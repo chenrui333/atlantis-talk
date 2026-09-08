@@ -39,5 +39,5 @@ with zipfile.ZipFile('slides.pptx') as z:
   assert not re.search(r'\bxxx\b|lorem|ipsum|\bTODO\b|\[insert',slide_text,re.I),part
  assert any(n.startswith('ppt/media/') for n in z.namelist())
  print('PASS: 10 slides, 16:9, official template layouts, embedded media, matching notes, HTTPS-only external hyperlinks.')
-print(f"Spoken words: {sum(len((n['narration']+' '+n['transition']).split()) for n in narration)}")
+print('Chinese narration checked against script.md; timing.md uses pronunciation estimates.')
 print('PDF, visual overflow, font substitution and QR decoding require separate rendering checks.')
