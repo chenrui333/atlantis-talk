@@ -44,7 +44,7 @@ text(s,'PROJECT LIGHTNING TALK:',M,1.52,9,.36,18,'FFFFFF',{bold:true,charSpacing
 text(s,'Atlantis:',M,2.03,8.7,.97,60,'FFFFFF',{bold:true});
 logo(s,7.5,1.71,1.25);
 text(s,'Terraform Pull Request Automation\nfor Cloud Native Teams',M,3.17,9.0,1.12,31,'FFFFFF',{bold:true});
-text(s,'Rui Chen  ·  Atlantis Maintainer',M,4.59,9,.42,24,'FFFFFF');
+text(s,[{text:'Rui Chen  ·  Atlantis Maintainer  ·  '},{text:'@chenrui333',options:{hyperlink:{url:'https://github.com/chenrui333'},underline:false}}],M,4.59,10.5,.42,24,'FFFFFF');
 text(s,'Shanghai, China  ·  September 8, 2026',M,5.11,9,.33,18,'FFFFFF');
 addNotes(s,1);
 }

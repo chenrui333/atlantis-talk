@@ -111,3 +111,5 @@ Verified directly against upstream provider documentation through GitHub API on 
 Live talk: five minutes, three to five slides, 16:9; event branding optional. The five-slide v3 satisfies the total-count wording. Rui subsequently selected the ten-slide v2; this is not a claim of organizer approval. Both retain the official template. Latest confirmed pavilion details: Atlantis, Tuesday 10:30–14:30, T-10, Grand Ballroom I (China Standard Time). The supplied table-number/shift field labels appear reversed; the rendered slide treats T-10 as the table and the hours as the shift.
 
 Final v2 check: draft PR #5296 remains open, draft and unmerged. The current Chinese narration calls it planning and promises no release date.
+
+C02 follow-up: cover handle @chenrui333 links to [Rui Chen’s GitHub profile](https://github.com/chenrui333), verified through the GitHub user API. It adds contact information, not spoken narration.

@@ -18,3 +18,5 @@ Validated September 7, 2026. Rui selected the ten-slide v2 after evaluating the 
 ## Limits
 
 Native PowerPoint automation remains denied by macOS; LibreOffice opening/export is tested. Native presenter-mode Chinese glyph rendering, physical projection and Rui’s actual speaking time still need the normal laptop rehearsal. No organizer upload occurred. The supplied 3–5-slide guidance remains a constraint; ten slides follow Rui’s explicit later selection, not verified organizer approval. The five-slide v3 is available as an alternative.
+
+Cover follow-up: added @chenrui333 beside the speaker identity and linked the GitHub profile. Regenerated PPTX/PDF/previews; inspected the title slide; no wrapping or skyline collision. Package and template-baselined validation passed, and the new link survives PDF export. Other slide visuals and Chinese narration are unchanged.
